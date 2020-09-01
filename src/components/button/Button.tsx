@@ -1,4 +1,5 @@
 import React from "react"
+import classnames from "classnames"
 import "./Button.scss"
 
 type btnType = "primary" | "dashed" | "text" | "info" | "success" | "warning" | "error";
@@ -9,10 +10,16 @@ interface IButton {
     size?: btnSize;
     disabled?: boolean;
     loading?: boolean;
+    className?: string;
 }
 
 const Button: React.FC<IButton> = (props) => {
-    return <div className="le-button">{props.children}</div>
+    const { type, className } = props
+    const classes = classnames("le-button", className, {
+        [`le_btn_${type}`]: type
+    })
+
+    return <button className={classes}>{props.children}</button>
 }
 
 Button.defaultProps = {

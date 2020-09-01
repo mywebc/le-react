@@ -1,8 +1,8 @@
 @import "../../styles/index.scss";
 
 .le-button {
-  width: 2.5em;
-  height: 1.5 em;
+  box-sizing: border-box;
+  line-height: $lineHeight;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,30 @@
   border: 1px solid $border;
   color: $text;
   padding: .5em 1em;
+  background-color: #fff;
+  border-radius: $borderRadiusLight;
   cursor: pointer;
   &:hover {
     color: $primary ;
+    border: 1px solid $primary;
   }
+}
+.le_btn_primary {
+  background-color: $primary;
+  color: #fff;
+}
+.le_btn_dashed {
+  border: 1px dashed $border;
+}
+.le_btn_success {
+  background-color: $success;
+  color: #fff;
+}
+.le_btn_warning {
+  background-color: $warning;
+  color: #fff;
+}
+.le_btn_error {
+  background-color: $error;
+  color: #fff;
 }

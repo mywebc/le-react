@@ -6,7 +6,11 @@ import "./App.scss"
 const App = () => {
   return (
     <div className="App">
-     <Button>你好</Button>
+     <Button>default button</Button>
+     <Button type={"primary"}>primary button</Button>
+     <Button type={"dashed"}>dashed button</Button>
+     <Button type={"success"}>success button</Button>
+     <Button type={"warning"}>warning button</Button>
     </div>
   );
 }

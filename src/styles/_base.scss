@@ -1,7 +1,7 @@
 // 主题色
 $success: #67C23A;
 $warning: #E6A23C;
-$danger: #F56C6C;
+$error: #F56C6C;
 $info: #909399;
 $primary: #409EFF;
 
@@ -10,7 +10,14 @@ $primary: #409EFF;
 $text: #303133;
 $textLight: #606266;
 $fontSize: 14px;
+$lineHeight: 1em;
 
 // 边框
 $border: #DCDFE6;
 $borderLight: #E4E7ED;
+
+// radius
+$borderRadiusLight: 2px;
+$borderRadiusNormal: 4px;
+$borderRadiusCircle: 20px;
+
