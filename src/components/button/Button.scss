@@ -1,3 +1,17 @@
+@import "../../styles/index.scss";
+
 .le-button {
-  color: red;
+  width: 2.5em;
+  height: 1.5 em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $fontSize;
+  border: 1px solid $border;
+  color: $text;
+  padding: .5em 1em;
+  cursor: pointer;
+  &:hover {
+    color: $primary ;
+  }
 }
