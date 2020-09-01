@@ -3,15 +3,62 @@ name: Button
 menu: General
 ---
 
-import { Playground, Props, PropsTable  } from 'docz'
+import { Playground, Props  } from 'docz'
 import Button from "./Button"
+import "./demo.scss"
 
-## Button
+### Button 按钮
+<p>基础组件，触发业务逻辑时使用。</p> 
 
-<Props of={Button} />
-
-## 源码
+### 基础用法
+<p>按钮类型有：默认按钮、主按钮、虚线按钮、文字按钮以及四种颜色按钮。通过设置type为primary、dashed、text、info、success、warning、error创建不同样式的按钮，不设置为默认样式。</p>
 
 <Playground>
-    <Button>按钮</Button>
+    <div className="basis">
+        <Button>default</Button> 
+        <Button type={"dashed"}>dashed</Button> 
+        <Button type={"text"}>text</Button>
+        <Button type={"info"}>info</Button>
+        <Button type={"primary"}>primary</Button> 
+        <Button type={"success"}>success</Button> 
+        <Button type={"warning"}>warning</Button> 
+        <Button type={"error"}>error</Button> 
+    </div>
 </Playground>
+
+### 禁用状态
+<p>按钮不可用状态。</p>
+
+<Playground>
+    <div className="basis">
+        <Button disabled>default</Button>
+        <Button type={"dashed"} disabled>dashed</Button>
+        <Button type={"text"} disabled>text</Button>
+        <Button type={"info"} disabled>info</Button>
+        <Button type={"primary"} disabled>primary</Button>
+        <Button type={"success"} disabled>success</Button>
+        <Button type={"warning"} disabled>warning</Button>
+        <Button type={"error"} disabled>error</Button>
+    </div>
+</Playground>
+
+### 按钮尺寸
+<p>按钮有三种尺寸：大、默认（中）、小;通过设置size为large和small将按钮设置为大和小尺寸，不设置为默认（中）尺寸。</p>
+
+<Playground>
+    <div className="basis">
+        <Button >default</Button>
+        <Button type={"primary"} size="large">large</Button>
+        <Button type={"success"} size="small">small</Button>
+    </div>
+</Playground>
+
+### 加载中状态
+<p>通过添加loading属性可以让按钮处于加载中状态，后两个按钮在点击时进入加载状态</p>
+
+<Playground>
+    <div className="basis">
+        <Button >default</Button>
+    </div>
+</Playground>
+

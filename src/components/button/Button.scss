@@ -3,7 +3,7 @@
 .le-button {
   box-sizing: border-box;
   line-height: $lineHeight;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   font-size: $fontSize;
@@ -13,27 +13,186 @@
   background-color: #fff;
   border-radius: $borderRadiusLight;
   cursor: pointer;
+  outline: none;
+  height: $btnHeight;
+
+
   &:hover {
-    color: $primary ;
+    color: $primary;
     border: 1px solid $primary;
+    opacity: .9;
+  }
+
+  &.le_btn_disabled {
+    &:hover {
+      border: 1px solid $disabledColor;
+      color: $text;
+    }
   }
 }
+
+
 .le_btn_primary {
   background-color: $primary;
   color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.le_btn_disabled {
+    border: 1px solid $disabled;
+
+    &:hover {
+      border: 1px solid $disabled;
+      color: #fff;
+    }
+  }
 }
+
 .le_btn_dashed {
   border: 1px dashed $border;
+
+  &:hover {
+    color: $primary;
+    border: 1px dashed $border;
+  }
+
+  &.le_btn_disabled {
+    border: 1px dashed $disabledColor;
+
+    &:hover {
+      border: 1px dashed $disabledColor;
+      color: $text;
+    }
+
+  }
 }
+
 .le_btn_success {
   background-color: $success;
   color: #fff;
+
+  &:hover {
+    color: #fff;
+    border: 1px solid $success;
+  }
+
+  &.le_btn_disabled {
+    border: 1px solid $disabled;
+
+    &:hover {
+      border: 1px solid $disabled;
+
+      color: #fff;
+    }
+  }
 }
+
 .le_btn_warning {
   background-color: $warning;
   color: #fff;
+
+  &:hover {
+    color: #fff;
+    border: 1px solid $warning;
+  }
+
+  &.le_btn_disabled {
+    border: 1px solid $disabled;
+
+    &:hover {
+      border: 1px solid $disabled;
+
+      color: #fff;
+    }
+  }
 }
+
 .le_btn_error {
   background-color: $error;
   color: #fff;
+
+  &:hover {
+    color: #fff;
+    border: 1px solid $error;
+  }
+
+  &.le_btn_disabled {
+    border: 1px solid $disabled;
+
+    &:hover {
+      border: 1px solid $disabled;
+
+      color: #fff;
+    }
+  }
+}
+
+.le_btn_text {
+  background-color: #fff;
+  border: none;
+
+  &:hover {
+    color: $primary;
+    border: none;
+  }
+
+  &.le_btn_disabled {
+    color: $disabled;
+
+    &.le_btn_disabled {
+      color: $text;
+
+      &:hover {
+        color: $text;
+        border: none;
+      }
+    }
+  }
+}
+
+.le_btn_info {
+  background-color: $info;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+    border: 1px solid $info;
+  }
+
+  &.le_btn_disabled {
+    border: 1px solid $disabled;
+
+    &:hover {
+      border: 1px solid $disabled;
+      color: #fff;
+    }
+  }
+}
+
+
+.le_btn_disabled {
+  opacity: .4;
+  cursor: no-drop;
+
+  &:hover {
+    opacity: .4;
+  }
+
+  >* {
+    pointer-events: none;
+  }
+}
+
+.le_btn_small {
+  font-size: $fontSizeSmall;
+  line-height: $lineHeightSmall;
+  height: $btnHeightSmall;
+}
+
+.le_btn_large {
+  font-size: $fontSizeLarge;
+  line-height: $lineHeightLarge;
+  height: $btnHeightLarge;
 }

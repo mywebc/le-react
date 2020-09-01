@@ -2,15 +2,28 @@
 $success: #67C23A;
 $warning: #E6A23C;
 $error: #F56C6C;
-$info: #909399;
+$info: #2db7f5;
 $primary: #409EFF;
 
 
-// 字体
+// 字体颜色
 $text: #303133;
 $textLight: #606266;
+// 字体大小
 $fontSize: 14px;
-$lineHeight: 1em;
+$fontSizeSmall: 12px;
+$fontSizeLarge: 16px;
+// 字体行高
+$lineHeight: 1.2em;
+$lineHeightSmall: 1em;
+$lineHeightLarge: 1.4em;
+
+$btnHeight: 2.2em;
+$btnHeightSmall: 2em;
+$btnHeightLarge:2.4em;
+
+$disabled:#f7f7f7;
+$disabledColor:#c5c8ce;
 
 // 边框
 $border: #DCDFE6;
@@ -20,4 +33,3 @@ $borderLight: #E4E7ED;
 $borderRadiusLight: 2px;
 $borderRadiusNormal: 4px;
 $borderRadiusCircle: 20px;
-

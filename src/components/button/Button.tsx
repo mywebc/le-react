@@ -2,8 +2,8 @@ import React from "react"
 import classnames from "classnames"
 import "./Button.scss"
 
-type btnType = "primary" | "dashed" | "text" | "info" | "success" | "warning" | "error";
-type btnSize = "large" | "small" | "default";
+type btnType = "primary" | "dashed" | "text" | "info" | "success" | "warning" | "error" | "text" | "info";
+type btnSize = "large" | "small";
 
 interface IButton {
     type?: btnType;
@@ -14,17 +14,17 @@ interface IButton {
 }
 
 const Button: React.FC<IButton> = (props) => {
-    const { type, className } = props
+    const { type, className, disabled, size } = props
     const classes = classnames("le-button", className, {
-        [`le_btn_${type}`]: type
+        [`le_btn_${type}`]: type,
+        le_btn_disabled: disabled,
+        [`le_btn_${size}`]: size
     })
 
-    return <button className={classes}>{props.children}</button>
+    return <button className={classes} type="button">{props.children}</button>
 }
 
 Button.defaultProps = {
-    type: "primary",
-    size: "default",
     disabled: false,
     loading: false
 }

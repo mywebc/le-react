@@ -7,10 +7,14 @@ const App = () => {
   return (
     <div className="App">
      <Button>default button</Button>
-     <Button type={"primary"}>primary button</Button>
-     <Button type={"dashed"}>dashed button</Button>
-     <Button type={"success"}>success button</Button>
-     <Button type={"warning"}>warning button</Button>
+     <Button type={"primary"} disabled>primary</Button>
+     <Button type={"dashed"}>dashed</Button>
+     <Button type={"success"}>success</Button>
+     <Button type={"warning"}>warning</Button>
+      <Button type={"error"}>error</Button>
+      <Button type={"info"}>info</Button>
+      <Button type={"text"}>text</Button>
+
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.basis {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    & > button {
+        margin-right: 8px;
+    }
+}
+p {
+    font-size: 14px;
+}
