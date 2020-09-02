@@ -1,5 +1,20 @@
 @import "../../styles/index.scss";
 
+// loading公共样式
+@mixin commonLoading {
+  .le_loadingIndicator {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: #fff #fff #fff transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: le-spin 1s infinite linear;
+  }
+}
+
 .le-button {
   box-sizing: border-box;
   line-height: $lineHeight;
@@ -9,18 +24,17 @@
   font-size: $fontSize;
   border: 1px solid $border;
   color: $text;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   background-color: #fff;
   border-radius: $borderRadiusLight;
   cursor: pointer;
   outline: none;
   height: $btnHeight;
 
-
   &:hover {
     color: $primary;
     border: 1px solid $primary;
-    opacity: .9;
+    opacity: 0.9;
   }
 
   &.le_btn_disabled {
@@ -29,8 +43,12 @@
       color: $text;
     }
   }
-}
 
+  @include commonLoading;
+  .le_loadingIndicator {
+    border-color: $primary $primary $primary transparent;
+  }
+}
 
 .le_btn_primary {
   background-color: $primary;
@@ -47,6 +65,9 @@
       border: 1px solid $disabled;
       color: #fff;
     }
+  }
+  .le_loadingIndicator {
+    border-color: #fff #fff #fff transparent;
   }
 }
 
@@ -65,7 +86,6 @@
       border: 1px dashed $disabledColor;
       color: $text;
     }
-
   }
 }
 
@@ -87,6 +107,9 @@
       color: #fff;
     }
   }
+  .le_loadingIndicator {
+    border-color: #fff #fff #fff transparent;
+  }
 }
 
 .le_btn_warning {
@@ -107,6 +130,9 @@
       color: #fff;
     }
   }
+  .le_loadingIndicator {
+    border-color: #fff #fff #fff transparent;
+  }
 }
 
 .le_btn_error {
@@ -126,6 +152,9 @@
 
       color: #fff;
     }
+  }
+  .le_loadingIndicator {
+    border-color: #fff #fff #fff transparent;
   }
 }
 
@@ -169,18 +198,20 @@
       color: #fff;
     }
   }
+  .le_loadingIndicator {
+    border-color: #fff #fff #fff transparent;
+  }
 }
 
-
 .le_btn_disabled {
-  opacity: .4;
+  opacity: 0.4;
   cursor: no-drop;
 
   &:hover {
-    opacity: .4;
+    opacity: 0.4;
   }
 
-  >* {
+  > * {
     pointer-events: none;
   }
 }
@@ -195,4 +226,39 @@
   font-size: $fontSizeLarge;
   line-height: $lineHeightLarge;
   height: $btnHeightLarge;
+}
+
+.le_btn_group {
+  display: inline-block;
+  & > .le-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  & > :first-child {
+    border-top-left-radius: $borderRadiusLarge;
+    border-bottom-left-radius: $borderRadiusLarge;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  & > :last-child {
+    border-top-right-radius: $borderRadiusLarge;
+    border-bottom-right-radius: $borderRadiusLarge;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+@keyframes le-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.le_loadingIndicator {
+  border-color: #fff #fff #fff transparent;
 }

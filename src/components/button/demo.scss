@@ -2,7 +2,10 @@
     display: inline-flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    & > button {
+    & > .le-button {
+        margin-right: 8px;
+    }
+    & > .le_btn_group {
         margin-right: 8px;
     }
 }

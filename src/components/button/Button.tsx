@@ -14,14 +14,22 @@ interface IButton {
 }
 
 const Button: React.FC<IButton> = (props) => {
-    const { type, className, disabled, size } = props
+    const { type, className, disabled, size, loading } = props
     const classes = classnames("le-button", className, {
         [`le_btn_${type}`]: type,
         le_btn_disabled: disabled,
-        [`le_btn_${size}`]: size
+        [`le_btn_${size}`]: size,
+    })
+    const loadingClasses = classnames({
+        "le_loadingIndicator": loading
     })
 
-    return <button className={classes} type="button">{props.children}</button>
+    return (
+        <button className={classes} type="button">
+            <span className={loadingClasses}></span>
+            {props.children}
+        </button>
+    )
 }
 
 Button.defaultProps = {

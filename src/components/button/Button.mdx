@@ -5,6 +5,7 @@ menu: General
 
 import { Playground, Props  } from 'docz'
 import Button from "./Button"
+import ButtonGroup from "./ButtonGroup"
 import "./demo.scss"
 
 ### Button 按钮
@@ -58,7 +59,31 @@ import "./demo.scss"
 
 <Playground>
     <div className="basis">
-        <Button >default</Button>
+        <Button loading>default</Button>
+        <Button loading disabled>default</Button>
+        <Button loading type={"primary"}>Loading</Button>
+        <Button loading type={"success"} disabled>default</Button>
+        <Button loading type={"dashed"} >dashed</Button>
+        <Button loading type={"text"} disabled>text</Button>
+        <Button loading type={"info"} >info</Button>
+        <Button loading type={"warning"} disabled>warning</Button>
+        <Button loading type={"error"} >error</Button>
     </div>
 </Playground>
 
+### 按钮组合
+<p>将多个Button放入ButtonGroup内，可实现按钮组合的效果。</p>
+
+<Playground>
+    <div className="basis">
+        <ButtonGroup>
+            <Button>left</Button>
+            <Button>right</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+            <Button>left</Button>
+            <Button>middle</Button>
+            <Button>right</Button>
+        </ButtonGroup>
+    </div>
+</Playground>
