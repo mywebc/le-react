@@ -6,19 +6,19 @@ const ButtonGroup: React.FC = (props) => {
   const [isValid, setValid] = useState(false)
 
   useEffect(() => {
-    console.log(props)
-    try {
-      (props.children as any).map((_: { type: { name: string } }) => {
-        if (_.type.name === "Button" || _.type.name === "ProxyFacade") {
-          setValid(true)
-        } else {
-          console.error("The child element is not valid!!")
-        }
-      })
-    } catch (error) {
-      setValid(false)
-      console.error("The child element is not valid!!")
-    }
+    // console.log(props)
+    // try {
+    //   (props.children as any).map((_: { type: { name: string } }) => {
+    //     if (_.type.name === "Button" || _.type.name === "ProxyFacade") {
+    //       setValid(true)
+    //     } else {
+    //       console.error("The child element is not valid!!")
+    //     }
+    //   })
+    // } catch (error) {
+    //   setValid(false)
+    //   console.error("The child element is not valid!!")
+    // }
   }, [])
 
   useEffect(() => {

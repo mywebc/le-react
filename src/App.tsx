@@ -7,10 +7,15 @@ import "./App.scss"
 const App = () => {
   return (
     <div className="App">
-      <ButtonGroup>
-        <Button>aaa</Button>
-        <Button>vbbbb</Button>
-      </ButtonGroup>
+       <ButtonGroup>
+            <Button>left</Button>
+            <Button>right</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+            <Button>left</Button>
+            <Button>middle</Button>
+            <Button>right</Button>
+        </ButtonGroup>
     </div>
   );
 }
