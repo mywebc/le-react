@@ -1,10 +1,9 @@
 // 主题色
-$success: #67C23A;
-$warning: #E6A23C;
-$error: #F56C6C;
+$success: #67c23a;
+$warning: #e6a23c;
+$error: #f56c6c;
 $info: #2db7f5;
-$primary: #409EFF;
-
+$primary: #409eff;
 
 // 字体颜色
 $text: #303133;
@@ -20,17 +19,34 @@ $lineHeightLarge: 1.4em;
 
 $btnHeight: 2.2em;
 $btnHeightSmall: 2em;
-$btnHeightLarge:2.4em;
+$btnHeightLarge: 2.4em;
 
-$disabled:#f7f7f7;
-$disabledColor:#c5c8ce;
+$disabled: #f7f7f7;
+$disabledColor: #c5c8ce;
 
 // 边框
-$border: #DCDFE6;
-$borderLight: #E4E7ED;
+$border: #dcdfe6;
+$borderLight: #e4e7ed;
 
 // radius
 $borderRadiusLight: 2px;
 $borderRadiusNormal: 4px;
 $borderRadiusLarge: 6px;
 $borderRadiusCircle: 20px;
+
+
+// loading 
+@keyframes le-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// switch
+$switchHeight: 22px;
+$switchHeightInner: $switchHeight - 4px;
+$true-color: $primary;
+$false-color: rgba(0, 0, 0, 0.25);

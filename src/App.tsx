@@ -7,10 +7,16 @@ import Table from "./components/table/Table"
 import Switch from "./components/switch/Switch"
 
 const App = () => {
+  const aa = (value: boolean, e: React.MouseEvent) => {
+    console.log(value);
+    console.log(e);
+  }
 
   return (
     <div className="App">
-      <Switch />
+      {/* <Switch defaultChecked={true} onChange={aa} loading={true} /> */}
+      {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
+      <Button  disabled={true}>asdasd</Button>
     </div>
   );
 }

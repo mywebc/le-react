@@ -11,13 +11,14 @@ interface IButtonProps {
     disabled?: boolean;
     loading?: boolean;
     className?: string;
+    style?: React.CSSProperties
 }
 
 const Button: React.FC<IButtonProps> = (props) => {
-    const { type, className, disabled, size, loading } = props
+    const { type, className, disabled, size, loading, style } = props
     const classes = classnames("le-button", className, {
         [`le-btn-${type}`]: type,
-        le_btn_disabled: disabled,
+        "le-btn-disabled": disabled,
         [`le-btn-${size}`]: size,
     })
     const loadingClasses = classnames({
@@ -25,7 +26,7 @@ const Button: React.FC<IButtonProps> = (props) => {
     })
 
     return (
-        <button className={classes} type="button">
+        <button className={classes} type="button" style={style}>
             <span className={loadingClasses}></span>
             {props.children}
         </button>

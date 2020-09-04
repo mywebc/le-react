@@ -1,7 +1,5 @@
-$switchHeight: 22px;
-$switchHeightInner: $switchHeight - 4px;
-$true-color: var(--true_color, #1890ff);
-$false-color: var(--false_color, rgba(0, 0, 0, 0.4));
+@import "../../styles/index.scss";
+
 .le-switch {
   height: $switchHeight;
   width: $switchHeight * 2;
@@ -9,6 +7,7 @@ $false-color: var(--false_color, rgba(0, 0, 0, 0.4));
   border-radius: $switchHeight/2;
   background: $false-color;
   position: relative;
+  cursor: pointer;
   > span {
     position: absolute;
     height: $switchHeightInner;
@@ -30,6 +29,62 @@ $false-color: var(--false_color, rgba(0, 0, 0, 0.4));
   cursor: no-drop;
   opacity: 0.5;
 }
+
+.le-switch.loading {
+  > span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    > span {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      border-radius: 8px;
+      border-color: $false-color $false-color $false-color transparent;
+      border-style: solid;
+      border-width: 2px;
+      animation: le-spin 1s infinite linear;
+    }
+  }
+  cursor: no-drop;
+  opacity: 0.5;
+}
+.le-switch.checked.loading {
+  > span {
+    > span {
+      border-color: $true-color $true-color $true-color transparent;
+    }
+  }
+  cursor: no-drop;
+  opacity: 0.5;
+}
+
+.le-switch.le-switch-small {
+  height: $switchHeight - 4px;
+  width: ($switchHeight - 4px) * 2;
+  > span {
+    height: $switchHeightInner - 4px;
+    width: $switchHeightInner - 4px;
+    top: 2px;
+    left: 2px;
+    border-radius: ($switchHeightInner - 4px)/2;
+  }
+}
+.le-switch.le-switch-small.checked {
+  > span {
+    left: calc(100% - #{$switchHeightInner - 4px} - 2px);
+  }
+}
+
+.le-switch.le-switch-small.le-switch.loading {
+  > span {
+    > span {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
 .le-switch:focus {
   outline: none;
 }
