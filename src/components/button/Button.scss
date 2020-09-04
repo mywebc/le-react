@@ -2,7 +2,7 @@
 
 // loading公共样式
 @mixin commonLoading {
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     width: 10px;
     height: 10px;
     display: inline-block;
@@ -37,7 +37,7 @@
     opacity: 0.9;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     &:hover {
       border: 1px solid $disabledColor;
       color: $text;
@@ -45,12 +45,12 @@
   }
 
   @include commonLoading;
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: $primary $primary $primary transparent;
   }
 }
 
-.le_btn_primary {
+.le-btn-primary {
   background-color: $primary;
   color: #fff;
 
@@ -58,7 +58,7 @@
     color: #fff;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px solid $disabled;
 
     &:hover {
@@ -66,12 +66,12 @@
       color: #fff;
     }
   }
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: #fff #fff #fff transparent;
   }
 }
 
-.le_btn_dashed {
+.le-btn-dashed {
   border: 1px dashed $border;
 
   &:hover {
@@ -79,7 +79,7 @@
     border: 1px dashed $border;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px dashed $disabledColor;
 
     &:hover {
@@ -89,7 +89,7 @@
   }
 }
 
-.le_btn_success {
+.le-btn-success {
   background-color: $success;
   color: #fff;
 
@@ -98,7 +98,7 @@
     border: 1px solid $success;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px solid $disabled;
 
     &:hover {
@@ -107,12 +107,12 @@
       color: #fff;
     }
   }
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: #fff #fff #fff transparent;
   }
 }
 
-.le_btn_warning {
+.le-btn-warning {
   background-color: $warning;
   color: #fff;
 
@@ -121,7 +121,7 @@
     border: 1px solid $warning;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px solid $disabled;
 
     &:hover {
@@ -130,12 +130,12 @@
       color: #fff;
     }
   }
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: #fff #fff #fff transparent;
   }
 }
 
-.le_btn_error {
+.le-btn-error {
   background-color: $error;
   color: #fff;
 
@@ -144,7 +144,7 @@
     border: 1px solid $error;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px solid $disabled;
 
     &:hover {
@@ -153,12 +153,12 @@
       color: #fff;
     }
   }
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: #fff #fff #fff transparent;
   }
 }
 
-.le_btn_text {
+.le-btn-text {
   background-color: #fff;
   border: none;
 
@@ -167,10 +167,10 @@
     border: none;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     color: $disabled;
 
-    &.le_btn_disabled {
+    &.le-btn-disabled {
       color: $text;
 
       &:hover {
@@ -181,7 +181,7 @@
   }
 }
 
-.le_btn_info {
+.le-btn-info {
   background-color: $info;
   color: #fff;
 
@@ -190,7 +190,7 @@
     border: 1px solid $info;
   }
 
-  &.le_btn_disabled {
+  &.le-btn-disabled {
     border: 1px solid $disabled;
 
     &:hover {
@@ -198,12 +198,12 @@
       color: #fff;
     }
   }
-  .le_loadingIndicator {
+  .le-loadingIndicator {
     border-color: #fff #fff #fff transparent;
   }
 }
 
-.le_btn_disabled {
+.le-btn-disabled {
   opacity: 0.4;
   cursor: no-drop;
 
@@ -216,19 +216,19 @@
   }
 }
 
-.le_btn_small {
+.le-btn-small {
   font-size: $fontSizeSmall;
   line-height: $lineHeightSmall;
   height: $btnHeightSmall;
 }
 
-.le_btn_large {
+.le-btn-large {
   font-size: $fontSizeLarge;
   line-height: $lineHeightLarge;
   height: $btnHeightLarge;
 }
 
-.le_btn_group {
+.le-btn-group {
   display: inline-block;
   & > .le-button {
     border-top-left-radius: 0;
@@ -259,6 +259,6 @@
   }
 }
 
-.le_loadingIndicator {
+.le-loadingIndicator {
   border-color: #fff #fff #fff transparent;
 }

@@ -5,7 +5,7 @@ import "./Button.scss"
 type btnType = "primary" | "dashed" | "text" | "info" | "success" | "warning" | "error" | "text" | "info";
 type btnSize = "large" | "small";
 
-interface IButton {
+interface IButtonProps {
     type?: btnType;
     size?: btnSize;
     disabled?: boolean;
@@ -13,15 +13,15 @@ interface IButton {
     className?: string;
 }
 
-const Button: React.FC<IButton> = (props) => {
+const Button: React.FC<IButtonProps> = (props) => {
     const { type, className, disabled, size, loading } = props
     const classes = classnames("le-button", className, {
-        [`le_btn_${type}`]: type,
+        [`le-btn-${type}`]: type,
         le_btn_disabled: disabled,
-        [`le_btn_${size}`]: size,
+        [`le-btn-${size}`]: size,
     })
     const loadingClasses = classnames({
-        "le_loadingIndicator": loading
+        "le-loadingIndicator": loading
     })
 
     return (
