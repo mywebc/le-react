@@ -1,0 +1,41 @@
+---
+name: Icon
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Icon from "./Icon"
+import Api from "./Api"
+import AHref from "./AHref"
+
+
+### Icon 图标
+<p>语义化的矢量图形</p>
+
+## 如何使用
+<p>内置一套<AHref name={"阿里巴巴国际站官方图标库"} src={"https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=19238"}/>，直接传入指定图标对应的name属性，</p>
+
+<Playground>
+    <div className="basis">
+       <Icon name={"icon-txt"}/>
+       <Icon name={"icon-pin"}/>
+       <Icon name={"icon-reeor"}/>
+       <Icon name={"icon-close"}/>
+       <Icon name={"icon-share"}/>
+       <Icon name={"icon-sorting"} style={{fill: "#f56c6c"}}/>
+       <Icon name={"icon-flag"} style={{fill: "#409eff"}}/>
+       <Icon name={"icon-Top"} style={{fill: "#219c91"}}/>
+       <Icon name={"icon-video"} style={{fill: "#67c23a"}}/>
+       <Icon name={"icon-vs"} style={{fill: "skyblue"}}/>
+    </div>
+</Playground>
+
+## 更改图标库源
+<p>支持替换图标库，可以直接在<AHref name={"iconFont"} src={"https://www.iconfont.cn/"}/>上选取心仪的图标库，生成symbol地址直接替换即可。</p>
+
+## APi
+
+<Api/>
+
+
+

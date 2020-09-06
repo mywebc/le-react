@@ -5,6 +5,7 @@ import "./styles/index.scss"
 import "./App.scss"
 import Table from "./components/table/Table"
 import Switch from "./components/switch/Switch"
+import Icon from "./components/icon/Icon"
 
 const App = () => {
   const aa = (value: boolean, e: React.MouseEvent) => {
@@ -17,6 +18,7 @@ const App = () => {
       {/* <Switch defaultChecked={true} onChange={aa} loading={true} /> */}
       {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
       <Button  disabled={true}>asdasd</Button>
+      <Icon name={"icon-txt"}/>
     </div>
   );
 }
