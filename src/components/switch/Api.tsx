@@ -27,10 +27,10 @@ const Api = () => {
   const dataSource = [
     {
       key: '1',
-      param: 'type',
-      explain: '按钮类型',
-      type: `"primary" | "dashed" | "text" | "info" | "success" | "warning" | "error" | "text" | "info"`,
-      defaultValue: "-"
+      param: 'defaultChecked',
+      explain: '默认选中状态',
+      type: `boolean`,
+      defaultValue: "false"
     },
     {
       key: '2',
@@ -42,8 +42,8 @@ const Api = () => {
     {
       key: '3',
       param: 'size',
-      explain: '按钮尺寸大小',
-      type: `large | small`,
+      explain: '设置尺寸大小',
+      type: `small`,
       defaultValue: "-"
     },
     {
@@ -55,13 +55,20 @@ const Api = () => {
     },
     {
       key: '5',
+      param: 'onChange',
+      explain: 'change回调',
+      type: '(checked: boolean, e: React.MouseEvent) => void;',
+      defaultValue: "-"
+    },
+    {
+      key: '6',
       param: 'className',
       explain: '自定义 Button 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
-      key: '6',
+      key: '7',
       param: 'style',
       explain: '自定义 Button 样式',
       type: 'React.CSSProperties',
