@@ -25,7 +25,7 @@ const Icon: React.FC<IIconProps> = (props) => {
     const classes = classnames("le-icon", props.className)
 
     return (
-        <svg className={classes}><use xlinkHref={`#${props.name}`} style={props.style} /></svg>
+        <svg className={classes}><use xlinkHref={`#icon-${props.name}`} style={props.style} /></svg>
     )
 }
 

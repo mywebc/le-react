@@ -1,0 +1,47 @@
+@import "../../styles/index.scss";
+
+.le-spin {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
+    .le-icon-wrapper {
+        >svg {
+            >use {
+                fill: $primary;
+            }
+        }
+    }
+
+    &.le-spin-spinning {
+        .le-icon-wrapper {
+            >svg {
+                animation: le-spin 1s infinite linear;
+            }
+        }
+    }
+
+    .le-spin-txt {
+        color: $primary;
+        font-size: $fontSize;
+    }
+
+    &.le-spin-small {
+        .le-icon-wrapper {
+            >svg {
+                font-size: $spinSmall;
+            }
+        }
+    }
+
+    &.le-spin-large {
+        .le-icon-wrapper {
+            >svg {
+                font-size: $spinLarge;
+            }
+        }
+    }
+}

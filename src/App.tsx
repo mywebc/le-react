@@ -6,6 +6,7 @@ import "./App.scss"
 import Table from "./components/table/Table"
 import Switch from "./components/switch/Switch"
 import Icon from "./components/icon/Icon"
+import Spin from "./components/spin/Spin"
 
 const App = () => {
   const aa = (value: boolean, e: React.MouseEvent) => {
@@ -19,6 +20,9 @@ const App = () => {
       {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
       <Button  disabled={true}>asdasd</Button>
       <Icon name={"icon-txt"}/>
+      <Spin tip={"loading"}/>
+      <Spin tip={"loading"} size={"small"}/>
+      <Spin tip={"loading"} size={"large"}/>
     </div>
   );
 }

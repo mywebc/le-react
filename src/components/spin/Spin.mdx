@@ -1,0 +1,50 @@
+---
+name: Spin
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Spin from "./Spin"
+import Api from "./Api"
+
+
+### Spin 加载中
+<p>用于页面和区块的加载中状态。</p>
+
+## 基本用法
+<p>一个简单的 loading 状态。</p>
+
+<Playground>
+    <div className="basis">
+        <Spin />
+    </div>
+</Playground>
+
+## 各种大小
+<p>使用small和large属性来切换大小</p>
+
+<Playground>
+    <div className="basis">
+        <Spin size={"small"}/>
+        <Spin />
+        <Spin size={"large"}/>
+    </div>
+</Playground>
+
+## 自定义描述文案
+<p>自定义描述文案。</p>
+
+<Playground>
+    <div className="basis">
+        <Spin tip={"loading..."}/>
+        <Spin tip={"加载中..."}/>
+    </div>
+</Playground>
+
+## APi
+
+<Api />
+
+
+
+
