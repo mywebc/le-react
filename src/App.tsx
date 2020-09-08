@@ -1,12 +1,9 @@
 import React from 'react';
 import Button from "./components/button/Button";
 import ButtonGroup from "./components/button/ButtonGroup"
+// import message from "./components/"
 import "./styles/index.scss"
 import "./App.scss"
-import Table from "./components/table/Table"
-import Switch from "./components/switch/Switch"
-import Icon from "./components/icon/Icon"
-import Spin from "./components/spin/Spin"
 
 const App = () => {
   const aa = (value: boolean, e: React.MouseEvent) => {
@@ -14,15 +11,15 @@ const App = () => {
     console.log(e);
   }
 
+  const handleClick = () => {
+    console.log("handleClick", 1231231)
+  }
+
   return (
     <div className="App">
       {/* <Switch defaultChecked={true} onChange={aa} loading={true} /> */}
       {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
-      <Button  disabled={true}>asdasd</Button>
-      <Icon name={"icon-txt"}/>
-      <Spin tip={"loading"}/>
-      <Spin tip={"loading"} size={"small"}/>
-      <Spin tip={"loading"} size={"large"}/>
+      <Button onClick={handleClick}>open message</Button>
     </div>
   );
 }
