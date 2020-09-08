@@ -10,7 +10,7 @@ export default {
   themeConfig: { 
     colors: {
       header: {
-        bg: 'green'
+        bg: '#fff'
       }
     },
   } 
