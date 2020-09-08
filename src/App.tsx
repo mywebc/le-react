@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "./components/button/Button";
 import ButtonGroup from "./components/button/ButtonGroup"
-// import message from "./components/"
+import Message from "./components/message/Message"
 import "./styles/index.scss"
 import "./App.scss"
 
@@ -13,6 +13,7 @@ const App = () => {
 
   const handleClick = () => {
     console.log("handleClick", 1231231)
+    Message.info()
   }
 
   return (
