@@ -1,8 +1,16 @@
 import React, { useEffect, useRef } from "react"
 import classnames from "classnames"
 import ReactDOM from "react-dom";
+// import { info } from "./openMessage"
 
-interface IMessageProps {
+export interface IMessageProps {
+  content?: string | React.ReactNode
+  duration?: number
+  top?: number
+  showIcon?: boolean
+  onClose?: () => any
+  className?: string
+  style?: React.CSSProperties
 }
 
 const Message = (props: IMessageProps) => {
@@ -11,8 +19,6 @@ const Message = (props: IMessageProps) => {
   const modalEl = useRef<HTMLDivElement>(divElement);
 
   const classes = classnames("le-message")
-
-
 
   useEffect(() => {
 
@@ -34,10 +40,9 @@ const Message = (props: IMessageProps) => {
   )
 }
 
-Message.info = () => {
-  console.log("info++")
-}
-
+// Message.info = () => {
+  // console.log("2131")
+  // ReactDOM.render(<Message content={"asdadasdasd"} />, document.getElementsByClassName(".App"))
+// }
 
 export default Message;
-
