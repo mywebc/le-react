@@ -13,7 +13,7 @@ const App = () => {
 
   const handleClick = () => {
     console.log("handleClick", 1231231)
-    // Message.info()
+    Message.info({ content: "this is content" })
   }
 
   return (
