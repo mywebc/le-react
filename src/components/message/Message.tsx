@@ -1,16 +1,21 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import classnames from "classnames"
 import ReactDOM from "react-dom";
 import { info } from "./openMessage"
+import "./Message.scss"
 
 export interface IMessageProps {
-  content?: string | React.ReactNode
+  content?: string | React.ReactNode;
+  options: messageOptionsType;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export type messageOptionsType = {
   duration?: number
   top?: number
   showIcon?: boolean
   onClose?: () => any
-  className?: string
-  style?: React.CSSProperties
 }
 
 export type modeType = {
@@ -18,11 +23,17 @@ export type modeType = {
 }
 
 const Message: React.FC<IMessageProps> & modeType = (props) => {
+  const { content, options: { duration } } = props
+
+  const [isShowMessage, setMessage] = useState<boolean>(true);
+
   // const divElement = document.createElement("div");
   // divElement.setAttribute("id", "le-message");
   // const modalEl = useRef<HTMLDivElement>(divElement);
 
-  const classes = classnames("le-message")
+  const classes = classnames("le-message", {
+    hiddenMessage: !isShowMessage
+  })
 
   // useEffect(() => {
 
@@ -32,20 +43,40 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
   //   };
   // }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage(false)
+    }, duration)
+  }, [])
+
+  useEffect(() => {
+    const hiddenDiv = document.querySelector(".hiddenMessage");
+    hiddenDiv?.parentElement?.remove();
+  },[isShowMessage])
+
   return (
     <div className={classes}>
       <div className="toast_main">
-        <div>{"内容"}</div>
+        <div className="icon">
+          icon
+        </div>
+        <div className="content">{content}</div>
       </div>
     </div>
   )
 }
 
-Message.info = () => {
-  const divElement = document.createElement("div");
-  divElement.setAttribute("id", "le-message-wrapper");
-  document.body.append(divElement)
-  ReactDOM.render(<Message />, document.getElementById("le-message-wrapper"))
+Message.info = (content: string, options: messageOptionsType) => {
+  let messageWrapper = document.querySelector("#le-message-wrapper");
+  if (messageWrapper === null) {
+    messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("id", "le-message-wrapper");
+    document.body.append(messageWrapper);
+  }
+  const messageInner = document.createElement("div");
+  messageWrapper.append(messageInner);
+  ReactDOM.render(<Message content={content} options={options} />, document.querySelector("#le-message-wrapper>div:last-child"))
 }
+
 
 export default Message;

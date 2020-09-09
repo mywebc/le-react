@@ -13,7 +13,9 @@ const App = () => {
 
   const handleClick = () => {
     console.log("handleClick", 1231231)
-    Message.info({ content: "this is content" })
+    Message.info("这是一条外部引用的提示", {
+      duration: 8000
+    })
   }
 
   return (
