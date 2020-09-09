@@ -52,7 +52,7 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
   useEffect(() => {
     const hiddenDiv = document.querySelector(".hiddenMessage");
     hiddenDiv?.parentElement?.remove();
-  },[isShowMessage])
+  }, [isShowMessage])
 
   return (
     <div className={classes}>
@@ -66,15 +66,20 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
   )
 }
 
-Message.info = (content: string, options: messageOptionsType) => {
-  let messageWrapper = document.querySelector("#le-message-wrapper");
+const isMessageWrapperExist = (messageWrapper: Element | null) => {
   if (messageWrapper === null) {
     messageWrapper = document.createElement("div");
     messageWrapper.setAttribute("id", "le-message-wrapper");
     document.body.append(messageWrapper);
   }
+  return messageWrapper
+}
+
+Message.info = (content: string, options: messageOptionsType) => {
+  let messageWrapper = document.querySelector("#le-message-wrapper");
+  const newMessageWrapper = isMessageWrapperExist(messageWrapper)
   const messageInner = document.createElement("div");
-  messageWrapper.append(messageInner);
+  newMessageWrapper.append(messageInner);
   ReactDOM.render(<Message content={content} options={options} />, document.querySelector("#le-message-wrapper>div:last-child"))
 }
 

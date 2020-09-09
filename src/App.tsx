@@ -14,7 +14,7 @@ const App = () => {
   const handleClick = () => {
     console.log("handleClick", 1231231)
     Message.info("这是一条外部引用的提示", {
-      duration: 8000
+      duration: 1000
     })
   }
 
@@ -22,6 +22,7 @@ const App = () => {
     <div className="App">
       {/* <Switch defaultChecked={true} onChange={aa} loading={true} /> */}
       {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
+      <Button onClick={handleClick}>open message</Button><br/>
       <Button onClick={handleClick}>open message</Button>
     </div>
   );

@@ -1,9 +1,19 @@
 @import "../../styles/index.scss";
 
+#le-message-wrapper {
+    position: fixed;
+    top: 20px;
+    z-index: $messageZIndex;
+    width: 100%;
+}
+
 .le-message {
+    text-align: center;
+    margin-bottom: 10px;
+
     .toast_main {
         display: inline-flex;
-        box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+        box-shadow: $messageBoxShadow;
         pointer-events: all;
         background: #fff;
         padding: 10px 16px;
