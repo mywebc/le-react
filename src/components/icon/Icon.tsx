@@ -12,10 +12,13 @@ interface IIconProps {
 const Icon: React.FC<IIconProps> = (props) => {
 
     useEffect(() => {
-        const scriptElem = document.createElement('script');
-        scriptElem.id = "icon-library";
-        scriptElem.src = props.iconLibrary || '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js';
-        document.body.appendChild(scriptElem);
+        const iconScript = document.querySelector("#icon-library")
+        if (iconScript == null) {
+            const scriptElem = document.createElement('script');
+            scriptElem.id = "icon-library";
+            scriptElem.src = props.iconLibrary || '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js';
+            document.body.appendChild(scriptElem);
+        }
         return () => {
             const targeEl = document.getElementById("icon-library");
             targeEl?.parentNode?.removeChild(targeEl);

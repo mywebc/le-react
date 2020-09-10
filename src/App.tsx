@@ -12,18 +12,46 @@ const App = () => {
   }
 
   const handleClick = () => {
-    console.log("handleClick", 1231231)
     Message.info("这是一条外部引用的提示", {
-      duration: 4000
+      duration: 200000,
+      // showIcon: true,
+      onClose: () => {
+        console.log("close ++++")
+      },
+    })
+  }
+  const handleClick1 = () => {
+    Message.info("这是一条外部引用的提示", {
+      duration: 2000
+    })
+  }
+  const handleClick2 = () => {
+    Message.success("这是一条外部引用的提示", {
+      duration: 2000
+    })
+  }
+  const handleClick3 = () => {
+    Message.error("这是一条外部引用的提示", {
+      duration: 2000
+    })
+  }
+  const handleClick4 = () => {
+    Message.warning("这是一条外部引用的提示...", {
+      duration: 200000,
+      onClose: () => {
+        console.log("close ++++")
+      },
+      icon: "gift"
     })
   }
 
   return (
     <div className="App">
-      {/* <Switch defaultChecked={true} onChange={aa} loading={true} /> */}
-      {/* <Switch defaultChecked={true} onChange={aa}  size={"small"}/> */}
-      <Button onClick={handleClick}>open message</Button><br/>
-      <Button onClick={handleClick}>open message</Button>
+      <Button onClick={handleClick}>normal</Button>
+      <Button onClick={handleClick1}>info</Button>
+      <Button onClick={handleClick2}>success</Button>
+      <Button onClick={handleClick3}>error</Button>
+      <Button onClick={handleClick4}>warning</Button>
     </div>
   );
 }

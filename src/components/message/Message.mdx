@@ -1,0 +1,99 @@
+---
+name: Message
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Message from "./Message"
+import Api from "./Api"
+import {Demo as Button} from "./Demo"
+
+### Message 全局提示
+<p>基础组件，触发业务逻辑时使用。</p> 
+
+## 普通提示
+<p>信息提醒反馈。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="info">normal</Button>
+  </div>
+</Playground>
+
+```js
+  Message.info("这是一条普通提示.")
+```
+
+## 其他提示
+<p>包括成功、失败、警告。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="success">success</Button>
+    <Button type="error">error</Button>
+    <Button type="warning">warning</Button>
+  </div>
+</Playground>
+
+```js
+  Message.success("这是一条成功提示.")
+  Message.error("这是一条失败提示.")
+  Message.warning("这是一条警告提示.")
+```
+
+## 修改延时
+<p>自定义时长 4s，默认时长为 2s。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="success" duration={4000}>success</Button>
+  </div>
+</Playground>
+
+```js
+  Message.success("这是一条成功提示.", {
+    duration: 8000
+  })
+```
+
+## 可关闭
+<p>自定义关闭函数</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="info" onClose={true}>info</Button>
+  </div>
+</Playground>
+
+```js
+  Message.success("这是一条成功提示.", {
+    onClose: () => {
+      alert("关闭回调")
+    }
+  })
+```
+
+## 图标自定义
+<p>支持图标自定义,传入内置图标库name即可</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="warning" icon={"gift"}>warning</Button>
+  </div>
+</Playground>
+
+```js
+  Message.success("这是一条成功提示.", {
+    icon: "gift"
+  })
+```
+
+
+## APi
+### 组件提供了一些静态方法，使用方式和参数如下：
+* message.success(content, options)
+* message.error(content, options)
+* message.info(content, options)
+* message.warning(content, options)
+
+<Api/>

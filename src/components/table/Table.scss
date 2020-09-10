@@ -24,5 +24,10 @@
       text-align: left;
       word-break: break-all;
     }
+    tr {
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
   }
 }

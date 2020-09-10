@@ -19,6 +19,35 @@
     padding: 10px 16px;
     font-size: $fontSize;
     animation: fadeIn linear 200ms;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100px;
+    .main_left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2px;
+      }
+      .content {
+        margin-bottom: 2px;
+      }
+    }
+    .main_right {
+      .close {
+        width: 14px;
+        // height: 14px;
+        margin-left: 2px;
+        cursor: pointer;
+        .le-icon {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
   }
 
   &.hiddenMessage {
