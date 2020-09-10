@@ -14,7 +14,6 @@ const App = () => {
   const handleClick = () => {
     Message.info("这是一条外部引用的提示", {
       duration: 200000,
-      // showIcon: true,
       onClose: () => {
         console.log("close ++++")
       },
