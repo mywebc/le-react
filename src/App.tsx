@@ -2,6 +2,7 @@ import React from 'react';
 import Button from "./components/button/Button";
 import ButtonGroup from "./components/button/ButtonGroup"
 import Message from "./components/message/Message"
+import Rate from "./components/rate/Rate"
 import "./styles/index.scss"
 import "./App.scss"
 
@@ -51,6 +52,8 @@ const App = () => {
       <Button onClick={handleClick2}>success</Button>
       <Button onClick={handleClick3}>error</Button>
       <Button onClick={handleClick4}>warning</Button>
+
+      <Rate/>
     </div>
   );
 }

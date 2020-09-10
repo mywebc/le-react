@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import classnames from "classnames"
 import ReactDOM from "react-dom";
 import Icon from "../icon/Icon"
@@ -45,12 +45,12 @@ const iconTypeArr: iconType[] = [
 ]
 
 const Message: React.FC<IMessageProps> & modeType = (props) => {
-  const { content, onClose, icon, type, duration, showIcon } = props
+  const { content, onClose, icon, type, duration, showIcon, className, style } = props
 
   const [isShowMessage, setMessage] = useState<boolean>(true);
   const [currentIcon, setIcon] = useState<iconType>()
 
-  const classes = classnames("le-message", {
+  const classes = classnames("le-message", className, {
     hiddenMessage: !isShowMessage
   })
 
@@ -79,7 +79,7 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
   }
 
   return (
-    <div className={classes}>
+    <div className={classes} style={style}>
       <div className="toast_main">
         <div className="main_left">
           {currentIcon && showIcon && (
