@@ -1,26 +1,46 @@
 @import "../../styles/index.scss";
 
 #le-message-wrapper {
-    position: fixed;
-    top: 20px;
-    z-index: $messageZIndex;
-    width: 100%;
+  position: fixed;
+  top: 20px;
+  z-index: $messageZIndex;
+  width: 100%;
 }
 
 .le-message {
-    text-align: center;
-    margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 
-    .toast_main {
-        display: inline-flex;
-        box-shadow: $messageBoxShadow;
-        pointer-events: all;
-        background: #fff;
-        padding: 10px 16px;
-        font-size: $fontSize;
-    }
+  .toast_main {
+    display: inline-flex;
+    box-shadow: $messageBoxShadow;
+    pointer-events: all;
+    background: #fff;
+    padding: 10px 16px;
+    font-size: $fontSize;
+    animation: fadeIn linear 200ms;
+  }
 
-    &.hiddenMessage {
-        display: none;
+  &.hiddenMessage {
+    & .toast_main {
+      animation: fadeOut linear 250ms;
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
 }

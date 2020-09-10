@@ -50,8 +50,10 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
   }, [])
 
   useEffect(() => {
-    const hiddenDiv = document.querySelector(".hiddenMessage");
-    hiddenDiv?.parentElement?.remove();
+    setTimeout(() => {
+      const hiddenDiv = document.querySelector(".hiddenMessage");
+      hiddenDiv?.parentElement?.remove();
+    }, 200)
   }, [isShowMessage])
 
   return (
@@ -76,7 +78,7 @@ const isMessageWrapperExist = (messageWrapper: Element | null) => {
 }
 
 Message.info = (content: string, options: messageOptionsType) => {
-  let messageWrapper = document.querySelector("#le-message-wrapper");
+  const messageWrapper = document.querySelector("#le-message-wrapper");
   const newMessageWrapper = isMessageWrapperExist(messageWrapper)
   const messageInner = document.createElement("div");
   newMessageWrapper.append(messageInner);
