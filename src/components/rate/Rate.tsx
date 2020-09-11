@@ -9,6 +9,8 @@ interface IRateProps {
 	allowClear?: boolean;
 	allowHalf?: boolean;
 	character?: JSX.Element[];
+	onChange?: (value: number) => any;
+	onHoverChange?: (value: number) => any;
 	className?: string;
 	style?: React.CSSProperties;
 }
@@ -22,7 +24,7 @@ const characterOrigin = [
 ]
 
 const Rate: React.FC<IRateProps> = (props) => {
-	const { defaultValue, disabled, allowClear, allowHalf, character, className, style } = props
+	const { defaultValue, disabled, allowClear, allowHalf, character, onChange, onHoverChange, className, style } = props
 	const [currentSelect, setSelect] = useState<number>(0);
 	const [currentHover, setHover] = useState<number>(0);
 	const [halfSelected, setHalfSelected] = useState<number>(-1);
@@ -50,25 +52,34 @@ const Rate: React.FC<IRateProps> = (props) => {
 	const handleClick = (index: number, area: 'half' | 'whole') => {
 		if (area === 'whole') {
 			if (allowClear && currentSelect === index + 1) {
-				setSelect(0)
-				setHalfSelected(-1)
+				setSelect(0);
+				setHalfSelected(-1);
+				onChange && onChange(0);
 			} else {
 				setSelect(index + 1)
+				onChange && onChange(index + 1);
 			}
 		}
 		if (area === 'half') {
 			if (allowClear && currentSelect === index) {
 				setSelect(0)
 				setHalfSelected(-1)
+				onChange && onChange(0);
 			} else {
 				setSelect(index)
 				setHalfSelected(index)
+				onChange && onChange(index + 0.5);
 			}
 		}
 	}
 
-	const handleOnMouseEnter = (index: number) => {
+	const handleOnMouseEnter = (index: number, area: 'half' | 'whole') => {
 		setHover(index)
+		if (area === 'half') {
+			onHoverChange && onHoverChange(index + 0.5)
+		} else {
+			onHoverChange && onHoverChange(index + 1)
+		}
 	}
 
 	const handleOnMouseLeave = () => {
@@ -78,14 +89,14 @@ const Rate: React.FC<IRateProps> = (props) => {
 	return (
 		<div className={classes} style={style}>
 			<ul>
-				{characterInner.map((key, index) => (
+				{characterInner.map((node, index) => (
 					<li className={`${index < currentSelect && "selected"} ${index < currentHover && "hoverSelected"} ${index === halfSelected && 'halfSelected'}`}>
 						{allowHalf && (
-							<div className="le-rate-first" onMouseEnter={() => handleOnMouseEnter(index)} onMouseLeave={handleOnMouseLeave} onClick={() => handleClick(index, 'half')}>
+							<div className="le-rate-first" onMouseEnter={() => handleOnMouseEnter(index, 'half')} onMouseLeave={handleOnMouseLeave} onClick={() => handleClick(index, 'half')}>
 								{(characterInner as any)[index]}
 							</div>
 						)}
-						<div className="le-rate-second" onMouseEnter={() => handleOnMouseEnter(index)} onMouseLeave={handleOnMouseLeave} onClick={() => handleClick(index, 'whole')}>
+						<div className="le-rate-second" onMouseEnter={() => handleOnMouseEnter(index, 'whole')} onMouseLeave={handleOnMouseLeave} onClick={() => handleClick(index, 'whole')}>
 							{(characterInner as any)[index]}
 						</div>
 					</li>

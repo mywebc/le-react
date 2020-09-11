@@ -60,9 +60,7 @@ const App = () => {
       <Button onClick={handleClick3}>error</Button>
       <Button onClick={handleClick4}>warning</Button>
 
-
-
-      <Rate character={character} allowClear allowHalf/>
+      <Rate onHoverChange={(x) => {console.log(x)}} allowHalf />
     </div>
   );
 }

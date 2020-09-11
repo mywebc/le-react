@@ -1,0 +1,89 @@
+---
+name: Rate
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Rate from "./Rate"
+import Icon from "../icon/Icon"
+import Api from "./Api"
+
+### Rate评分
+<p>评分组件。</p>
+
+## 基本使用
+<p>最简单的用法。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate />
+    </div>
+</Playground>
+
+
+## 半星
+<p>支持选中半星。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate allowHalf/>
+    </div>
+</Playground>
+
+## 默认值
+<p>可以设置默认值。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate defaultValue={2}/>
+       <Rate defaultValue={2.5} allowHalf/>
+    </div>
+</Playground>
+
+## 只读
+<p>只读，无法进行鼠标交互。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate defaultValue={4} disabled/>
+       <Rate defaultValue={1.5} allowHalf disabled/>
+    </div>
+</Playground>
+
+## 清除
+<p>支持允许或者禁用清除。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate defaultValue={4} allowClear/>
+       <Rate defaultValue={1.5} allowHalf allowClear/>
+    </div>
+</Playground>
+
+## 自定义字符
+<p>可以将星星替换为其他字符。</p>
+
+<Playground>
+    <div className="basis">
+       <Rate defaultValue={4} character={[
+          <Icon name="smile-fill" />,
+          <Icon name="smile-fill" />,
+          <Icon name="smile-fill" />,
+       ]}/>
+       <Rate defaultValue={1.5} allowHalf allowClear character={[
+          <Icon name="vip-fill" />,
+          <Icon name="vip-fill" />,
+          <Icon name="vip-fill" />,
+          <Icon name="vip-fill" />,
+          <Icon name="vip-fill" />,
+       ]}/>
+    </div>
+</Playground>
+
+
+## APi
+
+<Api/>
+
+
+
