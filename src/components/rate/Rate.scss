@@ -1,1 +1,52 @@
 @import "../../styles/index.scss";
+
+.le-rate {
+  display: inline-flex;
+  ul {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      fill: $rateNormal;
+      position: relative;
+      .le-rate-first {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        cursor: pointer;
+        overflow: hidden;
+        opacity: 0;
+        &:hover {
+          fill: $rateHighLight;
+          opacity: 1;
+        }
+      }
+      .le-rate-second {
+        cursor: pointer;
+        &:hover {
+          fill: $rateHighLight;
+        }
+      }
+      &.selected {
+        fill: $rateHighLight;
+      }
+      &.hoverSelected {
+        fill: $rateHighLight;
+      }
+      &.halfSelected {
+        .le-rate-first {
+          fill: $rateHighLight;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &.le-rate-disabled {
+    ul {
+      pointer-events: none;
+    }
+  }
+}

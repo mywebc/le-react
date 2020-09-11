@@ -5,6 +5,7 @@ import Message from "./components/message/Message"
 import Rate from "./components/rate/Rate"
 import "./styles/index.scss"
 import "./App.scss"
+import Icon from "./components/icon/Icon"
 
 const App = () => {
   const aa = (value: boolean, e: React.MouseEvent) => {
@@ -44,6 +45,12 @@ const App = () => {
       icon: "gift"
     })
   }
+  const character = [
+    <Icon name="smile-fill" />,
+    <Icon name="smile-fill" />,
+    <Icon name="smile-fill" />,
+    <Icon name="smile-fill" />,
+  ]
 
   return (
     <div className="App">
@@ -53,7 +60,9 @@ const App = () => {
       <Button onClick={handleClick3}>error</Button>
       <Button onClick={handleClick4}>warning</Button>
 
-      <Rate/>
+
+
+      <Rate character={character} allowClear allowHalf/>
     </div>
   );
 }
