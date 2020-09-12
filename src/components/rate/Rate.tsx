@@ -57,6 +57,7 @@ const Rate: React.FC<IRateProps> = (props) => {
 				onChange && onChange(0);
 			} else {
 				setSelect(index + 1)
+				setHalfSelected(-1);
 				onChange && onChange(index + 1);
 			}
 		}
