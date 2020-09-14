@@ -7,21 +7,29 @@ import "./styles/index.scss"
 import "./App.scss"
 import Icon from "./components/icon/Icon"
 import Modal from "./components/modal/Modal"
+import Notification from "./components/notification/Notification"
+
+type notificationType = "info" | "success" | "error" | "warning" | "open"
 
 const App = () => {
 
-  const [visible, setVisible] = useState<boolean>(false)
-  const handleClick = () => {
-    setVisible(true)
+  const handleClick = (type: notificationType) => {
+    Notification[type]({
+      message: 'Notification Title',
+      description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+      duration: 0,
+      placement: "bottomRight",
+      icon: "smile"
+    })
   }
-  const handleClick2 = () => {
-    setVisible(false)
-  }
+
   return (
     <div className="App">
-      <Button onClick={handleClick}>open</Button>
-      <Button onClick={handleClick2}>close</Button>
-      <Modal visible={visible} />
+      <Button onClick={() => handleClick("open")}>open</Button>
+      <Button onClick={() => handleClick("info")}>info</Button>
+      <Button onClick={() => handleClick("success")}>success</Button>
+      <Button onClick={() => handleClick("error")}>error</Button>
+      <Button onClick={() => handleClick("warning")}>warning</Button>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import classnames from "classnames"
 import ReactDOM from "react-dom";
 import Icon from "../icon/Icon"
 import "./Message.scss"
+import { judgeDOMExitAndCreateDOM } from "../../utils";
 
 export interface IMessageProps {
   content?: string | React.ReactNode;
@@ -69,7 +70,6 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
 
   useEffect(() => {
     const newIcon = icon ? { type: "primary", name: icon, fill: "#409eff" } : iconTypeArr.find(_ => _.type === type);
-    console.log("showIcon", showIcon);
     setIcon(newIcon)
   }, [])
 
@@ -107,12 +107,8 @@ Message.defaultProps = {
 }
 
 const isMessageWrapperExist = () => {
-  let messageWrapper = document.querySelector("#le-message-wrapper");
-  if (messageWrapper === null) {
-    messageWrapper = document.createElement("div");
-    messageWrapper.setAttribute("id", "le-message-wrapper");
-    document.body.append(messageWrapper);
-  }
+  // 判断是否有节点,没有则创建返回
+  const messageWrapper = judgeDOMExitAndCreateDOM("le-message-wrapper")
   const messageInner = document.createElement("div");
   messageWrapper.append(messageInner);
 }

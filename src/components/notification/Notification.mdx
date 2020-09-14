@@ -1,0 +1,158 @@
+---
+name: Notification
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Notification from "./Notification"
+import Api from "./Api"
+import {Demo as Button} from "./Demo"
+
+### Notification 通知提醒框
+<p>基础组件，触发业务逻辑时使用。</p> 
+
+## 基本用法
+<p>最简单的用法，调用open方法,4秒后自动关闭。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="open">open</Button>
+  </div>
+</Playground>
+
+#### 使用
+```js
+  Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+  })
+```
+
+## 修改延时
+<p>自定义通知框自动关闭的延时，默认4s，取消自动关闭只要将该值设为 0 即可。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="open" duration={0}>open</Button>
+  </div>
+</Playground>
+
+#### 使用
+```js
+  Message.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    duration: 0
+  })
+```
+
+## 其他提示
+<p>内置带有图标的提醒框。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="info">info</Button>
+    <Button type="success">success</Button>
+    <Button type="error">error</Button>
+    <Button type="warning">warning</Button>
+  </div>
+</Playground>
+
+#### 使用
+```js
+  Notification.info({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+  })
+  Notification.success({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+  })
+  Notification.error({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+  })
+  Notification.warning({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+  })
+```
+
+
+
+## 图标自定义
+<p>图标可以被自定义,传入内置图标库name即可。</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="open" icon={"smile"}>open</Button>
+  </div>
+</Playground>
+
+#### 使用
+```js
+  Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    icon: "smile"
+  })
+```
+
+## 位置
+<p>通知从右上角、右下角、左下角、左上角弹出。默认为右上角</p>
+
+<Playground>
+  <div className="basis">
+    <Button type="open" placement={"topLeft"}>topLeft</Button>
+    <Button type="open" placement={"topRight"}>topRight</Button>
+    <Button type="open" placement={"bottomLeft"}>bottomLeft</Button>
+    <Button type="open" placement={"bottomRight"}>bottomRight</Button>
+  </div>
+</Playground>
+
+#### 使用
+```js
+ Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    placement: "topLeft"
+  })
+   Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    placement: "topRight"
+  })
+   Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    placement: "bottomLeft"
+  })
+   Notification.open({
+    message: 'Notification Title',
+    description: `This is the content of the notification. This is the content of the notification.
+     This is the content of the notification.`,
+    placement: "bottomRight"
+  })
+```
+
+
+## APi
+### 组件提供了一些静态方法，使用方式和参数如下：
+* Notification.open(options)
+* Notification.success(options)
+* Notification.error(options)
+* Notification.info(options)
+* Notification.warning(options)
+
+#### options参数如下
+<Api/>
