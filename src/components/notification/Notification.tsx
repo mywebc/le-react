@@ -39,12 +39,14 @@ const iconTypeArr: iconType[] = [
   { type: "info", name: "prompt-fill", fill: "#409eff" },
   { type: "error", name: "reeor-fill", fill: "#f56c6c" },
   { type: "warning", name: "warning-fill", fill: "#e69b2b" },
+  { type: "open", name: "", fill: "#409eff" }
 ]
 
 const Notification: React.FC<INotificationProps> & staticMethodsType = (props) => {
   const { message, description, duration, type, icon, placement, onClose, className, style } = props
   const [isShowNotification, setNotification] = useState<boolean>(true)
   const [currentType, setType] = useState<iconType>()
+  const [lastPlacement, setLastPlacement] = useState<notificationPlacement>("topRight")
 
   const classes = classnames("le-notification", className, {
     hiddenNotification: !isShowNotification,
@@ -70,16 +72,38 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
     const newType = iconTypeArr.find(_ => _.type === type);
     if (icon && newType) {
       newType.name = icon
-      newType.fill = "#409eff"
     }
     setType(newType)
   }, [])
 
   useEffect(() => {
     const notificationWrapper = document.querySelector("#le-notification-wrapper");
-    notificationWrapper?.classList.remove();
+    removeAllClasses(notificationWrapper);
+    // const newPlacement = placement ? placement : "topRight"
+    // // 清空方位变化，就清空所有子元素
+    // if (newPlacement !== lastPlacement) {
+    //   while (notificationWrapper?.firstChild) {
+    //     notificationWrapper.removeChild(notificationWrapper.firstChild);
+    //   }
+    // }
+    // setLastPlacement(newPlacement)
     notificationWrapper?.classList.add(`le-notification-wrapper-${placement}`)
   }, [placement])
+
+  const removeAllClasses = (notificationWrapper: Element | null) => {
+    if (document.querySelector(".le-notification-wrapper-topLeft")) {
+      notificationWrapper?.classList.remove("le-notification-wrapper-topLeft");
+    }
+    if (document.querySelector(".le-notification-wrapper-topRight")) {
+      notificationWrapper?.classList.remove("le-notification-wrapper-topRight");
+    }
+    if (document.querySelector(".le-notification-wrapper-bottomLeft")) {
+      notificationWrapper?.classList.remove("le-notification-wrapper-bottomLeft");
+    }
+    if (document.querySelector(".le-notification-wrapper-bottomRight")) {
+      notificationWrapper?.classList.remove("le-notification-wrapper-bottomRight");
+    }
+  }
 
   const handleClose = () => {
     setNotification(false)
@@ -88,7 +112,7 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
 
   return <div className={classes} style={style}>
     <div className="toast_main">
-      {currentType && (
+      {currentType && currentType.name !== "" && (
         <div className="main_left">
           <Icon name={currentType.name} style={{ fill: currentType.fill }} />
         </div>
@@ -106,10 +130,16 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   </div>
 }
 
-const isNotificationExist = () => {
+const judgePlacementToReturnDiffClass = (placement: notificationPlacement | undefined) => {
+  return placement ? `le-notification-${placement}` : "le-notification-topRight"
+}
+
+const isNotificationExist = (placement: notificationPlacement | undefined) => {
   // 判断是否有节点,没有则创建返回
-  const notificationWrapper = judgeDOMExitAndCreateDOM("le-notification-wrapper")
+  const notificationWrapper = judgeDOMExitAndCreateDOM(`le-notification-wrapper-${placement ? placement : "topRight"}`)
   const messageInner = document.createElement("div");
+  // 标志不同方位的div Wrapper
+  // messageInner.setAttribute("id", judgePlacementToReturnDiffClass(placement));
   notificationWrapper.append(messageInner);
 }
 
@@ -121,27 +151,27 @@ const renderDom = (options: INotificationProps, type: notificationType) => {
     type={type}
     icon={options.icon}
     placement={options.placement}
-  />, document.querySelector("#le-notification-wrapper>div:last-child"))
+  />, document.querySelector(`#le-notification-wrapper-${options.placement ? options.placement : "topRight"}>div:last-child`))
 }
 
 Notification.open = (options: INotificationProps) => {
-  isNotificationExist()
+  isNotificationExist(options.placement)
   renderDom(options, "open")
 }
 Notification.success = (options: INotificationProps) => {
-  isNotificationExist()
+  isNotificationExist(options.placement)
   renderDom(options, "success")
 }
 Notification.error = (options: INotificationProps) => {
-  isNotificationExist()
+  isNotificationExist(options.placement)
   renderDom(options, "error")
 }
 Notification.warning = (options: INotificationProps) => {
-  isNotificationExist()
+  isNotificationExist(options.placement)
   renderDom(options, "warning")
 }
 Notification.info = (options: INotificationProps) => {
-  isNotificationExist()
+  isNotificationExist(options.placement)
   renderDom(options, "info")
 }
 

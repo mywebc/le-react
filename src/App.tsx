@@ -18,8 +18,8 @@ const App = () => {
       message: 'Notification Title',
       description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
       duration: 0,
-      placement: "bottomRight",
-      icon: "smile"
+      // placement: "topRight",
+      // icon: "smile"
     })
   }
 
