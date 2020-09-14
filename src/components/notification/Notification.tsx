@@ -4,7 +4,6 @@ import "./Notification.scss"
 import { judgeDOMExitAndCreateDOM } from "../../utils"
 import ReactDOM from "react-dom"
 import Icon from "../icon/Icon"
-import { S_IFREG } from "constants"
 
 interface INotificationProps {
   message: string;
