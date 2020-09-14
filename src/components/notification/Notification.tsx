@@ -4,6 +4,7 @@ import "./Notification.scss"
 import { judgeDOMExitAndCreateDOM } from "../../utils"
 import ReactDOM from "react-dom"
 import Icon from "../icon/Icon"
+import { S_IFREG } from "constants"
 
 interface INotificationProps {
   message: string;
@@ -46,7 +47,6 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   const { message, description, duration, type, icon, placement, onClose, className, style } = props
   const [isShowNotification, setNotification] = useState<boolean>(true)
   const [currentType, setType] = useState<iconType>()
-  const [lastPlacement, setLastPlacement] = useState<notificationPlacement>("topRight")
 
   const classes = classnames("le-notification", className, {
     hiddenNotification: !isShowNotification,
@@ -69,9 +69,16 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   }, [isShowNotification])
 
   useEffect(() => {
-    const newType = iconTypeArr.find(_ => _.type === type);
-    if (icon && newType) {
-      newType.name = icon
+    let newType = iconTypeArr.find(_ => _.type === type);
+    if (icon) {
+      if (newType) {
+        newType.name = icon;
+      }
+    }
+    if (!icon && newType?.type === "open") {
+      if (newType) {
+        newType.name = "";
+      }
     }
     setType(newType)
   }, [])
@@ -79,14 +86,6 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   useEffect(() => {
     const notificationWrapper = document.querySelector("#le-notification-wrapper");
     removeAllClasses(notificationWrapper);
-    // const newPlacement = placement ? placement : "topRight"
-    // // 清空方位变化，就清空所有子元素
-    // if (newPlacement !== lastPlacement) {
-    //   while (notificationWrapper?.firstChild) {
-    //     notificationWrapper.removeChild(notificationWrapper.firstChild);
-    //   }
-    // }
-    // setLastPlacement(newPlacement)
     notificationWrapper?.classList.add(`le-notification-wrapper-${placement}`)
   }, [placement])
 
@@ -130,16 +129,11 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   </div>
 }
 
-const judgePlacementToReturnDiffClass = (placement: notificationPlacement | undefined) => {
-  return placement ? `le-notification-${placement}` : "le-notification-topRight"
-}
 
 const isNotificationExist = (placement: notificationPlacement | undefined) => {
   // 判断是否有节点,没有则创建返回
   const notificationWrapper = judgeDOMExitAndCreateDOM(`le-notification-wrapper-${placement ? placement : "topRight"}`)
   const messageInner = document.createElement("div");
-  // 标志不同方位的div Wrapper
-  // messageInner.setAttribute("id", judgePlacementToReturnDiffClass(placement));
   notificationWrapper.append(messageInner);
 }
 
