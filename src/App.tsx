@@ -7,17 +7,28 @@ import "./styles/index.scss"
 import "./App.scss"
 import Icon from "./components/icon/Icon"
 import Modal from "./components/modal/Modal"
+import Notification from "./components/notification/Notification"
+
+type notificationType = "info" | "success" | "error" | "warning" | "open"
 
 const App = () => {
 
+  const handleClick = (type: notificationType) => {
+    Notification[type]({
+      message: 'Notification Title',
+      description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+      duration: 0,
+      placement: "bottomRight"
+    })
+  }
 
   return (
     <div className="App">
-
-      <Rate onHoverChange={(x) => {console.log(x)}} allowHalf />
-
-      <Modal/>
-
+      <Button onClick={() => handleClick("open")}>open</Button>
+      <Button onClick={() => handleClick("info")}>info</Button>
+      <Button onClick={() => handleClick("success")}>success</Button>
+      <Button onClick={() => handleClick("error")}>error</Button>
+      <Button onClick={() => handleClick("warning")}>warning</Button>
     </div>
   );
 }

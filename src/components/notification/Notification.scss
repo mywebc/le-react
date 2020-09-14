@@ -1,0 +1,163 @@
+@import "../../styles/index.scss";
+
+#le-notification-wrapper {
+  position: fixed;
+  top: 20px;
+  z-index: $notificationZIndex;
+  width: 380px;
+  right: 20px;
+
+  &.le-notification-wrapper-topLeft {
+    left: 20px;
+    .le-notification {
+      .toast_main {
+        animation: fadeInTopLeft linear 300ms;
+      }
+      &.hiddenNotification {
+        & .toast_main {
+          animation: fadeOutTopLeft linear 300ms;
+        }
+      }
+    }
+  }
+  &.le-notification-wrapper-bottomLeft {
+    top: auto;
+    left: 20px;
+    bottom: 20px;
+    .le-notification {
+      .toast_main {
+        animation: fadeInBottomLeft linear 300ms;
+      }
+      &.hiddenNotification {
+        & .toast_main {
+          animation: fadeOutBottomLeft linear 300ms;
+        }
+      }
+    }
+  }
+  &.le-notification-wrapper-bottomRight {
+    right: 20px;
+    bottom: 20px;
+    top: auto;
+    .le-notification {
+      .toast_main {
+        animation: fadeInBottomRight linear 300ms;
+      }
+      &.hiddenNotification {
+        & .toast_main {
+          animation: fadeOutBottomRight linear 300ms;
+        }
+      }
+    }
+  }
+}
+
+.le-notification {
+  margin-bottom: 10px;
+
+  .toast_main {
+    display: inline-flex;
+    box-shadow: $notificationBoxShadow;
+    pointer-events: all;
+    background: #fff;
+    padding: 16px 24px;
+    font-size: $fontSize;
+    animation: fadeIn linear 300ms;
+    min-width: 100px;
+    & .main_left {
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+    & .main_right {
+      & .main_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .main_header_title {
+          font-size: $fontSizeLarge;
+        }
+        .main_header_icon {
+          cursor: pointer;
+        }
+      }
+      & .main_content {
+        font-size: $fontSize;
+        margin-right: 18px;
+      }
+    }
+  }
+
+  &.hiddenNotification {
+    & .toast_main {
+      animation: fadeOut linear 300ms;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(400px);
+  }
+}
+
+@keyframes fadeInTopLeft {
+  0% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeOutTopLeft {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+@keyframes fadeInBottomLeft {
+  0% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeOutBottomLeft {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+@keyframes fadeInBottomRight {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeOutBottomRight {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(400px);
+  }
+}
