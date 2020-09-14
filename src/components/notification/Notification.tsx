@@ -12,6 +12,7 @@ interface INotificationProps {
   type?: notificationType;
   icon?: string;
   placement?: notificationPlacement;
+  onClose?: () => any
   className?: string;
   style?: React.CSSProperties;
 }
@@ -41,7 +42,7 @@ const iconTypeArr: iconType[] = [
 ]
 
 const Notification: React.FC<INotificationProps> & staticMethodsType = (props) => {
-  const { message, description, duration, type, icon, placement, className, style } = props
+  const { message, description, duration, type, icon, placement, onClose, className, style } = props
   const [isShowNotification, setNotification] = useState<boolean>(true)
   const [currentType, setType] = useState<iconType>()
 
@@ -76,11 +77,13 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
 
   useEffect(() => {
     const notificationWrapper = document.querySelector("#le-notification-wrapper");
+    notificationWrapper?.classList.remove();
     notificationWrapper?.classList.add(`le-notification-wrapper-${placement}`)
-  }, [])
+  }, [placement])
 
   const handleClose = () => {
     setNotification(false)
+    onClose && onClose();
   }
 
   return <div className={classes} style={style}>
