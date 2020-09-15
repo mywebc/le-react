@@ -1,20 +1,20 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import { theme, useConfig, ComponentsProvider } from 'docz'
-import { ThemeProvider } from 'theme-ui'
-import { Menu } from './Menu'
+import { Styled, ThemeProvider } from 'theme-ui'
+
+import defaultTheme from '~theme'
+import components from '~components'
 
 const Theme = ({ children }) => {
   const config = useConfig()
   return (
-    <ThemeProvider theme={config}>
-       <Menu />
-      <ComponentsProvider>{children}</ComponentsProvider>
+    <ThemeProvider theme={config.themeConfig}>
+      <ComponentsProvider components={components}>
+        <Styled.root>{children}</Styled.root>
+      </ComponentsProvider>
     </ThemeProvider>
   )
 }
 
-const themeConfig = {
-  initialColorMode: 'dark',
-}
-
-export default theme(themeConfig)(Theme)
+export default theme(defaultTheme)(Theme)
