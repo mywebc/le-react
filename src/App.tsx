@@ -12,6 +12,7 @@ import Notification from "./components/notification/Notification"
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
 const App = () => {
+  const [visible, setVisible] = useState<boolean>(false);
 
   const handleClick = (type: notificationType) => {
     Notification[type]({
@@ -23,13 +24,24 @@ const App = () => {
     })
   }
 
+  const modalClick = () => {
+    setVisible(true)
+  }
+
   return (
     <div className="App">
-      <Button onClick={() => handleClick("open")}>open</Button>
+      {/* <Button onClick={() => handleClick("open")}>open</Button>
       <Button onClick={() => handleClick("info")}>info</Button>
       <Button onClick={() => handleClick("success")}>success</Button>
       <Button onClick={() => handleClick("error")}>error</Button>
-      <Button onClick={() => handleClick("warning")}>warning</Button>
+      <Button onClick={() => handleClick("warning")}>warning</Button> */}
+
+      {<Button onClick={modalClick}>open</Button>}
+      <Modal visible={visible} title={"this is modal title"}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </div>
   );
 }
