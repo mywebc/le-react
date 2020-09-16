@@ -26,6 +26,7 @@ const App = () => {
 
   const modalClick = () => {
     setVisible(true)
+    console.log("app", visible)
   }
 
   return (
@@ -37,7 +38,7 @@ const App = () => {
       <Button onClick={() => handleClick("warning")}>warning</Button> */}
 
       {<Button onClick={modalClick}>open</Button>}
-      <Modal visible={visible} title={"this is modal title"}>
+      <Modal visible={visible} title={"this is modal title"} onCancel={() => { setVisible(false) }} >
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>

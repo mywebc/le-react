@@ -40,6 +40,7 @@ $borderRadiusCircle: 20px;
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -56,7 +57,9 @@ $spinSmall: 14px;
 $spinLarge: 24px;
 
 // message
-$messageBoxShadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+$messageBoxShadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+0 6px 16px 0 rgba(0, 0, 0, .08),
+0 9px 28px 8px rgba(0, 0, 0, .05);
 $messageZIndex: 200;
 
 //rate
@@ -64,6 +67,12 @@ $rateNormal: #DADADA;
 $rateHighLight: #EAE84F;
 
 // notification
-$notificationBoxShadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+$notificationBoxShadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+0 6px 16px 0 rgba(0, 0, 0, .08),
+0 9px 28px 8px rgba(0, 0, 0, .05);
 $notificationZIndex: 200;
 
+// modal
+$modalBoxShadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+0 6px 16px 0 rgba(0, 0, 0, .08),
+0 9px 28px 8px rgba(0, 0, 0, .05);

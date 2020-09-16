@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, ReactNode } from "react"
 import "./Modal.scss"
 import classnames from "classnames"
 import ReactDOM from "react-dom"
@@ -9,13 +9,17 @@ interface IModalProps {
 	visible: boolean;
 	title: string;
 	mask?: boolean;
+	closeIcon?: string;
+	maskClosable?: boolean;
+	footer?: ReactNode[] | null;
+	onCancel?: () => any;
+	onConfirm?: () => any;
 	className?: string;
 	style?: React.CSSProperties;
 }
 
 const Modal: React.FC<IModalProps> = (props) => {
-	const { visible, mask, title, className } = props
-
+	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, footer, className, style } = props
 	const [isShow, setShow] = useState<boolean>(false)
 
 	const classes = classnames("le-modal", className, {
@@ -43,8 +47,15 @@ const Modal: React.FC<IModalProps> = (props) => {
 		setShow(visible)
 	}, [visible])
 
-	const handleClickWrapper = () => {
+	const toggleModalVisible = () => {
 		setShow(false)
+		onCancel && onCancel()
+	}
+
+	const toggleModalVisibleByMask = () => {
+		if (!maskClosable) return;
+		setShow(false)
+		onCancel && onCancel()
 	}
 
 	const handleContentClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -53,21 +64,22 @@ const Modal: React.FC<IModalProps> = (props) => {
 
 	return (
 		isShow ? ReactDOM.createPortal((
-			<div className={classes} onClick={handleClickWrapper}>
+			<div className={classes} onClick={toggleModalVisibleByMask} style={style}>
 				<div className="le-modal-content-wrapper" onClick={handleContentClick}>
 					<div className="le-modal-content-title">
 						<div className="le-modal-content-title-left">{title}</div>
-						<div className="le-modal-content-title-right">
-							<Icon name={"close"} />
+						<div className="le-modal-content-title-right" onClick={toggleModalVisible}>
+							{closeIcon && <Icon name={closeIcon} />}
 						</div>
 					</div>
 					<div className="le-modal-content-inner">{props.children}</div>
-					<div className="le-modal-content-footer">
-						<div className="btn_wrapper">
-							<Button>取消</Button>
-							<Button type="primary">确定</Button>
+					{footer && (
+						<div className="le-modal-content-footer">
+							<div className="btn_wrapper">
+								{footer.map(_ => _)}
+							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 		), modalEl.current) : null
@@ -76,7 +88,13 @@ const Modal: React.FC<IModalProps> = (props) => {
 
 Modal.defaultProps = {
 	visible: false,
-	mask: true
+	mask: true,
+	closeIcon: "close",
+	maskClosable: true,
+	footer: [
+		<Button>取消</Button>,
+		<Button type="primary">确定</Button>
+	]
 }
 
 export default Modal
