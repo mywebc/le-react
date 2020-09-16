@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react"
 import "./Modal.scss"
 import classnames from "classnames"
 import ReactDOM from "react-dom"
+import Icon from "../icon/Icon"
+import Button from "../button/Button"
 
 interface IModalProps {
 	visible: boolean;
@@ -53,8 +55,19 @@ const Modal: React.FC<IModalProps> = (props) => {
 		isShow ? ReactDOM.createPortal((
 			<div className={classes} onClick={handleClickWrapper}>
 				<div className="le-modal-content-wrapper" onClick={handleContentClick}>
-					<div className="le-modal-content-title">{title}</div>
-					<div className="le-modal-content">{props.children}</div>
+					<div className="le-modal-content-title">
+						<div className="le-modal-content-title-left">{title}</div>
+						<div className="le-modal-content-title-right">
+							<Icon name={"close"} />
+						</div>
+					</div>
+					<div className="le-modal-content-inner">{props.children}</div>
+					<div className="le-modal-content-footer">
+						<div className="btn_wrapper">
+							<Button>取消</Button>
+							<Button type="primary">确定</Button>
+						</div>
+					</div>
 				</div>
 			</div>
 		), modalEl.current) : null

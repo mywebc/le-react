@@ -20,6 +20,43 @@
             border-radius: 2px;
             pointer-events: auto;
             margin-top: 140px;
+
+            .le-modal-content-title {
+                padding: 16px 24px;
+                color: rgba(0, 0, 0, .85);
+                background: #fff;
+                border-bottom: 1px solid #f0f0f0;
+                border-radius: 2px 2px 0 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .le-modal-content-title-right {
+                    cursor: pointer;
+                }
+            }
+
+            .le-modal-content-inner {
+                padding: 24px;
+            }
+
+            .le-modal-content-footer {
+                padding: 10px 16px;
+                text-align: right;
+                background: 0 0;
+                border-top: 1px solid #f0f0f0;
+                border-radius: 0 0 2px 2px;
+
+                .btn_wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    >.le-button:nth-child(1) {
+                        margin-right: 6px;
+                    }
+                }
+            }
         }
     }
 
