@@ -70,14 +70,14 @@ const Api = () => {
     {
       key: '7',
       param: 'className',
-      explain: '自定义 Button 类名',
+      explain: '自定义 Notification 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
       key: '8',
       param: 'style',
-      explain: '自定义 Button 样式',
+      explain: '自定义 Notification 样式',
       type: 'React.CSSProperties',
       defaultValue: "-"
     },

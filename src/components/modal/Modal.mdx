@@ -1,0 +1,189 @@
+---
+name: Modal
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Modal from "./Modal"
+import Api from "./Api"
+import { Demo } from "./Demo"
+
+### Modal对话框
+<p>需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Modal 在当前页面正中打开一个浮层，承载相应的操作。</p> 
+
+## 基本用法
+<p>第一个对话框。</p>
+
+<Playground>
+  <div className="basis">
+        <Demo/>
+  </div>
+</Playground>
+
+#### 使用
+```jsx
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+```
+
+## 遮罩层显示
+<p>遮罩层是否显示(默认显示)，是否可点击关闭</p>
+
+<Playground>
+  <div className="basis">
+        <Demo mask={false}/>
+        <Demo maskClosable={false}/>
+  </div>
+</Playground>
+
+#### 使用
+```jsx
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    mask={false}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    maskClosable={false}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+```
+
+## 自定义按钮文字
+<p>设置 okText 与 cancelText 以自定义按钮文字。</p>
+
+<Playground>
+  <div className="basis">
+        <Demo okText={"ok"} cancelText={"cancel"}/>
+  </div>
+</Playground>
+
+#### 使用
+```jsx
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    okText={"ok"}
+    cancelText={"cancel"}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+```
+
+
+## 自定义关闭icon
+<p>支持icon图标替换，传入内置图标库name即可，null即不显示图标</p>
+
+<Playground>
+  <div className="basis">
+        <Demo closeIcon={"smile"}/>
+        <Demo closeIcon={null}/>
+  </div>
+</Playground>
+
+#### 使用
+```jsx
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    closeIcon={"smile"}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    closeIcon={null}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+```
+
+## 自定义页脚属性
+<p>页脚支持传入自定义button按钮，null即为不显示页脚</p>
+
+<Playground>
+  <div className="basis">
+        <Demo footer={"buttonArray"}/>
+        <Demo footer={null}/>
+  </div>
+</Playground>
+
+#### 使用
+```jsx
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    footer={[
+        <Button onClick={() => {setVisible(false)}}>left</Button>
+        <Button onClick={() => {setVisible(false)}}>right</Button>
+    ]}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+<Modal
+    visible={visible}
+    title={"this is modal title"}
+    onCancel={() => { setVisible(false) }}
+    onConfirm={() => { setVisible(false) }}
+    footer={null}
+>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+```
+
+## 函数调用
+<p>当然也非常人性化的提供了函数调用的方式</p>
+
+#### 使用
+```jsx
+Modal.open({
+    visible: true,
+    title: "this is modal title",
+    content: "Some contents..",
+    onCancel: () => {setVisible(false)},
+    onConfirm: () => {setVisible(false)}
+})
+```
+
+## APi
+
+<Api/>

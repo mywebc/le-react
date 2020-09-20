@@ -8,10 +8,9 @@ import { judgeDOMExitAndCreateDOM } from "../../utils"
 
 interface IModalProps {
 	visible: boolean;
-	title: string;
+	title: string | null;
 	mask?: boolean;
 	content?: ReactNode | string;
-	isShowHeader?: boolean;
 	closeIcon?: string | null;
 	maskClosable?: boolean;
 	okText?: string;
@@ -30,7 +29,7 @@ type staticModalMethods = {
 }
 
 const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
-	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, onCloseIcon, content, callType, isShowHeader, okText, cancelText, footer, className, style } = props
+	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, onCloseIcon, content, callType, okText, cancelText, footer, className, style } = props
 	const [isShow, setShow] = useState<boolean>(false)
 
 	const classes = classnames("le-modal", className, {
@@ -90,7 +89,7 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 		isShow ? ReactDOM.createPortal((
 			<div className={classes} onClick={toggleModalVisibleByMask} style={style}>
 				<div className="le-modal-content-wrapper" onClick={handleContentClick}>
-					{isShowHeader && (
+					{title && (
 						<div className="le-modal-content-title">
 							<div className="le-modal-content-title-left">{title}</div>
 							<div className="le-modal-content-title-right" onClick={handleCloseIcon}>
@@ -99,16 +98,18 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 						</div>
 					)}
 					<div className="le-modal-content-inner">{callType === "HTML" ? props.children : content}</div>
-					<div className="le-modal-content-footer">
-						<div className="btn_wrapper">
-							{footer ? footer.map(_ => _) : (
-								<>
-									<Button onClick={handleCancel}>{cancelText ? cancelText : "取消"}</Button>
-									<Button type="primary" onClick={handleOk}>{okText ? okText : "确定"}</Button>
-								</>
-							)}
+					{footer === null ? null : (
+						<div className="le-modal-content-footer">
+							<div className="btn_wrapper">
+								{footer ? footer.map(_ => _) : (
+									<>
+										<Button onClick={handleCancel}>{cancelText ? cancelText : "取消"}</Button>
+										<Button type="primary" onClick={handleOk}>{okText ? okText : "确定"}</Button>
+									</>
+								)}
+							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 		), modalEl.current) : null
@@ -120,7 +121,6 @@ Modal.defaultProps = {
 	mask: true,
 	closeIcon: "close",
 	maskClosable: true,
-	isShowHeader: true,
 	callType: "HTML"
 }
 

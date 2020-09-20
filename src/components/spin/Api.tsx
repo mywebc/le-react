@@ -49,14 +49,14 @@ const Api = () => {
     {
       key: '4',
       param: 'className',
-      explain: '自定义 Button 类名',
+      explain: '自定义 Spin 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
       key: '5',
       param: 'style',
-      explain: '自定义 Button 样式',
+      explain: '自定义 Spin 样式',
       type: 'React.CSSProperties',
       defaultValue: "-"
     },

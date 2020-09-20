@@ -63,14 +63,14 @@ const Api = () => {
     {
       key: '6',
       param: 'className',
-      explain: '自定义 Button 类名',
+      explain: '自定义 Switch 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
       key: '7',
       param: 'style',
-      explain: '自定义 Button 样式',
+      explain: '自定义 Switch 样式',
       type: 'React.CSSProperties',
       defaultValue: "-"
     },

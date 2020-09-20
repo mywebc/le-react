@@ -11,6 +11,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        z-index: $modalZIndex;
 
         .le-modal-content-wrapper {
             width: 520px;

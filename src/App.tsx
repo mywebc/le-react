@@ -54,7 +54,7 @@ const App = () => {
       title={"this is modal title"} 
       onCancel={() => { setVisible(false) }} 
       onConfirm={() => {console.log("hello")}} 
-      // footer={[<Button>测试</Button>,<Button>饿是谁</Button>]}
+      footer={null}
       >
         <p>Some contents...</p>
         <p>Some contents...</p>
