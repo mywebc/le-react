@@ -115,12 +115,10 @@ const isMessageWrapperExist = () => {
 
 const renderDom = (content: string, options: messageOptionsType, type: mesageType) => {
   ReactDOM.render(<Message
+    {...options}
     content={content}
-    showIcon={options?.showIcon}
-    duration={options?.duration}
-    icon={options?.icon}
-    onClose={options?.onClose}
-    type={type} />, document.querySelector("#le-message-wrapper>div:last-child"))
+    type={type}
+  />, document.querySelector("#le-message-wrapper>div:last-child"))
 }
 
 Message.info = (content: string, options: messageOptionsType) => {

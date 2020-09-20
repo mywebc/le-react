@@ -138,12 +138,8 @@ const isNotificationExist = (placement: notificationPlacement | undefined) => {
 
 const renderDom = (options: INotificationProps, type: notificationType) => {
   ReactDOM.render(<Notification
-    message={options.message}
-    description={options.description}
-    duration={options.duration}
+    {...options}
     type={type}
-    icon={options.icon}
-    placement={options.placement}
   />, document.querySelector(`#le-notification-wrapper-${options.placement ? options.placement : "topRight"}>div:last-child`))
 }
 

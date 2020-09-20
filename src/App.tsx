@@ -29,6 +29,16 @@ const App = () => {
     console.log("app", visible)
   }
 
+  const handleModalClick = () => {
+    Modal.open({
+      visible: true,
+      title: "test",
+      content: "你好",
+      onCancel: () => {console.log("12")},
+      onConfirm: () => {console.log("confirm")}
+    })
+  }
+
   return (
     <div className="App">
       {/* <Button onClick={() => handleClick("open")}>open</Button>
@@ -38,8 +48,14 @@ const App = () => {
       <Button onClick={() => handleClick("warning")}>warning</Button> */}
 
       {<Button onClick={modalClick}>open</Button>}
-      <Modal visible={visible} title={"this is modal title"} onCancel={() => { setVisible(false) }} >
-        <p>Some contents...</p>
+      <Button onClick={handleModalClick}>open modal</Button>
+      <Modal 
+      visible={visible} 
+      title={"this is modal title"} 
+      onCancel={() => { setVisible(false) }} 
+      onConfirm={() => {console.log("hello")}} 
+      // footer={[<Button>测试</Button>,<Button>饿是谁</Button>]}
+      >
         <p>Some contents...</p>
         <p>Some contents...</p>
       </Modal>

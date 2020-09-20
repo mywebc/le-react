@@ -4,22 +4,33 @@ import classnames from "classnames"
 import ReactDOM from "react-dom"
 import Icon from "../icon/Icon"
 import Button from "../button/Button"
+import { judgeDOMExitAndCreateDOM } from "../../utils"
 
 interface IModalProps {
 	visible: boolean;
 	title: string;
 	mask?: boolean;
-	closeIcon?: string;
+	content?: ReactNode | string;
+	isShowHeader?: boolean;
+	closeIcon?: string | null;
 	maskClosable?: boolean;
+	okText?: string;
+	cancelText?: string;
 	footer?: ReactNode[] | null;
 	onCancel?: () => any;
 	onConfirm?: () => any;
+	onCloseIcon?: () => any;
+	callType?: "HTML" | "METHODS";
 	className?: string;
 	style?: React.CSSProperties;
 }
 
-const Modal: React.FC<IModalProps> = (props) => {
-	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, footer, className, style } = props
+type staticModalMethods = {
+	open: Function;
+}
+
+const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
+	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, onCloseIcon, content, callType, isShowHeader, okText, cancelText, footer, className, style } = props
 	const [isShow, setShow] = useState<boolean>(false)
 
 	const classes = classnames("le-modal", className, {
@@ -52,6 +63,11 @@ const Modal: React.FC<IModalProps> = (props) => {
 		onCancel && onCancel()
 	}
 
+	const handleCloseIcon = () => {
+		toggleModalVisible()
+		onCloseIcon && onCloseIcon()
+	}
+
 	const toggleModalVisibleByMask = () => {
 		if (!maskClosable) return;
 		setShow(false)
@@ -62,24 +78,37 @@ const Modal: React.FC<IModalProps> = (props) => {
 		e.stopPropagation();
 	}
 
+	const handleCancel = () => {
+		onCancel && onCancel()
+	}
+
+	const handleOk = () => {
+		onConfirm && onConfirm()
+	}
+
 	return (
 		isShow ? ReactDOM.createPortal((
 			<div className={classes} onClick={toggleModalVisibleByMask} style={style}>
 				<div className="le-modal-content-wrapper" onClick={handleContentClick}>
-					<div className="le-modal-content-title">
-						<div className="le-modal-content-title-left">{title}</div>
-						<div className="le-modal-content-title-right" onClick={toggleModalVisible}>
-							{closeIcon && <Icon name={closeIcon} />}
-						</div>
-					</div>
-					<div className="le-modal-content-inner">{props.children}</div>
-					{footer && (
-						<div className="le-modal-content-footer">
-							<div className="btn_wrapper">
-								{footer.map(_ => _)}
+					{isShowHeader && (
+						<div className="le-modal-content-title">
+							<div className="le-modal-content-title-left">{title}</div>
+							<div className="le-modal-content-title-right" onClick={handleCloseIcon}>
+								{closeIcon && <Icon name={closeIcon} />}
 							</div>
 						</div>
 					)}
+					<div className="le-modal-content-inner">{callType === "HTML" ? props.children : content}</div>
+					<div className="le-modal-content-footer">
+						<div className="btn_wrapper">
+							{footer ? footer.map(_ => _) : (
+								<>
+									<Button onClick={handleCancel}>{cancelText ? cancelText : "取消"}</Button>
+									<Button type="primary" onClick={handleOk}>{okText ? okText : "确定"}</Button>
+								</>
+							)}
+						</div>
+					</div>
 				</div>
 			</div>
 		), modalEl.current) : null
@@ -91,11 +120,13 @@ Modal.defaultProps = {
 	mask: true,
 	closeIcon: "close",
 	maskClosable: true,
-	footer: [
-		<Button>取消</Button>,
-		<Button type="primary">确定</Button>
-	]
+	isShowHeader: true,
+	callType: "HTML"
 }
 
+Modal.open = (options: IModalProps) => {
+	const modalWrapper = judgeDOMExitAndCreateDOM("modal-wrapper")
+	ReactDOM.render(<Modal {...options} callType={"METHODS"} />, modalWrapper)
+}
 
 export default Modal
