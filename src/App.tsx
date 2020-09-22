@@ -61,7 +61,7 @@ const App = () => {
         <p>Some contents...</p>
       </Modal>
 
-      <Affix  offsetTop={10}>
+      <Affix>
         <Button>affix</Button>
       </Affix>
       <Button style={{height: 1000}}>hahdsad</Button>

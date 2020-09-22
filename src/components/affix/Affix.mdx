@@ -1,0 +1,40 @@
+---
+name: Affix
+menu: General
+---
+
+import { Playground, Props  } from 'docz'
+import Affix from "./Affix"
+import Button from "../button/Button"
+import Api from "./Api"
+
+### Affix 固钉
+<p>将页面元素钉在可视范围。</p> 
+
+## 基础用法
+<p>最基本的用法。</p>
+
+<Playground>
+    <div className="basis">
+        <Affix>
+            <Button>Affix固定</Button>
+        </Affix>
+    </div>
+</Playground>
+
+
+## 指定距离
+<p>使用offsetTop可以指定距离顶部的偏移量。</p>
+
+<Playground>
+    <div className="basis">
+        <Affix>
+            <Button offsetTop={20}>Affix固定</Button>
+        </Affix>
+    </div>
+</Playground>
+
+## APi
+
+<Api/>
+

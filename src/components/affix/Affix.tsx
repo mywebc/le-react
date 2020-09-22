@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import classnames from "classnames"
 import "./Affix.scss"
 
@@ -10,7 +10,6 @@ interface IAffixProps {
 
 const Affix: React.FC<IAffixProps> = (props) => {
   const { offsetTop, className, style } = props;
-  const [originTop, setOriginTop] = useState<number>(0)
   const originTopRef = useRef(0)
   const affixRef = useRef<HTMLDivElement>(null)
 
@@ -36,11 +35,8 @@ const Affix: React.FC<IAffixProps> = (props) => {
   }
 
   const handleScroll = () => {
-    console.log("window.scrollY", window.scrollY);
-    console.log("affixRef", (affixRef.current as HTMLDivElement).getBoundingClientRect());
-    console.log("originTop", originTop);
     const { top, bottom, left, right } = (affixRef.current as HTMLDivElement).getBoundingClientRect()
-    if (offsetTop && window.scrollY > (originTopRef.current - offsetTop)) {
+    if (offsetTop !== undefined && window.scrollY >= (originTopRef.current - offsetTop)) {
       (affixRef.current as HTMLDivElement).style.position = "fixed";
       (affixRef.current as HTMLDivElement).style.width = right - left + 'px';
       (affixRef.current as HTMLDivElement).style.height = bottom - top + 'px';
@@ -51,7 +47,6 @@ const Affix: React.FC<IAffixProps> = (props) => {
     }
   }
 
-
   return (
     <div className={classes} style={style} ref={affixRef}>
       {props.children}
@@ -60,7 +55,7 @@ const Affix: React.FC<IAffixProps> = (props) => {
 }
 
 Affix.defaultProps = {
-  offsetTop: 20
+  offsetTop: 0
 }
 
 export default Affix
