@@ -8,6 +8,7 @@ import "./App.scss"
 import Icon from "./components/icon/Icon"
 import Modal from "./components/modal/Modal"
 import Notification from "./components/notification/Notification"
+import Affix from "./components/affix/Affix"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
@@ -34,8 +35,8 @@ const App = () => {
       visible: true,
       title: "test",
       content: "你好",
-      onCancel: () => {console.log("12")},
-      onConfirm: () => {console.log("confirm")}
+      onCancel: () => { console.log("12") },
+      onConfirm: () => { console.log("confirm") }
     })
   }
 
@@ -49,16 +50,21 @@ const App = () => {
 
       {<Button onClick={modalClick}>open</Button>}
       <Button onClick={handleModalClick}>open modal</Button>
-      <Modal 
-      visible={visible} 
-      title={"this is modal title"} 
-      onCancel={() => { setVisible(false) }} 
-      onConfirm={() => {console.log("hello")}} 
-      footer={null}
+      <Modal
+        visible={visible}
+        title={"this is modal title"}
+        onCancel={() => { setVisible(false) }}
+        onConfirm={() => { console.log("hello") }}
+        footer={null}
       >
         <p>Some contents...</p>
         <p>Some contents...</p>
       </Modal>
+
+      <Affix  offsetTop={10}>
+        <Button>affix</Button>
+      </Affix>
+      <Button style={{height: 1000}}>hahdsad</Button>
     </div>
   );
 }
