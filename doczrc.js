@@ -1,6 +1,6 @@
 export default {
   typescript: true,
-  title: "React UI",
+  title: "React",
   menu: [
     'Getting Started',
     // { name: 'Components', menu: ['Input','Button'] }
