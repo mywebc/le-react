@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState } from "react"
 import classnames from "classnames"
 import "./HomePage.scss"
 import ReactDOM from "react-dom"
@@ -9,18 +9,14 @@ type HomePageStaticMethods = {
 
 const HomePage: React.FC & HomePageStaticMethods = () => {
 
-  const homePageWrapper = useRef(judgeDOMExitAndCreateDOMInner("le-home-page-wrapper"))
-
   const toggleHome = () => {
-    window.location.href = window.location.origin + "/gettingStarted"
     document.querySelector("#le-home-page-wrapper")?.remove()
   }
 
-  return ReactDOM.createPortal(
+  return (
     <div className={"le-homePage"}>
       <button onClick={toggleHome}>go to doc</button>
-    </div>,
-    homePageWrapper.current
+    </div>
   )
 }
 
@@ -30,7 +26,7 @@ HomePage.open = () => {
 }
 
 
-const judgeDOMExitAndCreateDOMInner = (id: string) => {
+ const judgeDOMExitAndCreateDOMInner = (id: string) => {
   let domWrapper = document.querySelector(`#${id}`);
   if (domWrapper === null) {
     domWrapper = document.createElement("div");
