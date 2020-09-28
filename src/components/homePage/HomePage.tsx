@@ -16,6 +16,13 @@ const HomePage: React.FC & HomePageStaticMethods = () => {
     //   document.querySelector("#le-home-page-wrapper")?.remove()
   }
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [])
+
   return ReactDOM.createPortal(
     <div className={"le-homePage"}>
       <button onClick={toggleHome}>go to doc</button>

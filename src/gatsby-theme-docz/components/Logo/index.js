@@ -1,6 +1,5 @@
 import React from 'react'
 import logo from '../../images/logo.png'
-import HomePage from "../../homePage/HomePage"
 
 export const Logo = () => {
 
