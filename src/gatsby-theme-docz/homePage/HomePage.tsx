@@ -10,7 +10,7 @@ type HomePageStaticMethods = {
 const HomePage: React.FC & HomePageStaticMethods = () => {
 
   const toggleHome = () => {
-    document.querySelector("#le-home-page-wrapper")?.remove()
+    // document.querySelector("#le-home-page-wrapper")?.remove()
   }
 
   return (

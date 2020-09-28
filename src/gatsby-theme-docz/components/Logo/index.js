@@ -5,7 +5,6 @@ import HomePage from "../../homePage/HomePage"
 export const Logo = () => {
 
     const getToHome = () => {
-        HomePage.open()
         window.location = window.location.origin
     }
 

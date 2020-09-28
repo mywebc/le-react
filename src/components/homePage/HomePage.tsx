@@ -13,7 +13,7 @@ const HomePage: React.FC & HomePageStaticMethods = () => {
 
   const toggleHome = () => {
     window.location.href = window.location.origin + "/gettingStarted"
-    document.querySelector("#le-home-page-wrapper")?.remove()
+    //   document.querySelector("#le-home-page-wrapper")?.remove()
   }
 
   return ReactDOM.createPortal(
