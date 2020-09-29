@@ -1,3 +1,24 @@
 @import "../../styles/index.scss";
 
-.le-drawer {}
+.le-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: $drawerZIndex;
+
+  .le-drawer-content {
+    width: 520px;
+    min-height: 100px;
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    pointer-events: auto;
+    margin-top: 140px;
+    box-shadow: $drawerShadow;
+  }
+}
