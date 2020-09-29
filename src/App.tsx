@@ -17,8 +17,13 @@ const App = () => {
     console.log("test");
   }
 
+  const handleClick = () => {
+    setVisible(true)
+  }
+
   return (
     <div className="App">
+      <Button onClick={handleClick}>open</Button>
       <Drawer
         title={"Basic Drawer"}
         placement="right"
