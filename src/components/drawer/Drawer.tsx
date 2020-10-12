@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { judgeDOMExitAndCreateDOM } from "../../utils";
 import classnames from "classnames"
 import ReactDOM from "react-dom";
@@ -14,27 +14,26 @@ interface IDrawerProps {
     className?: string;
 }
 
-
 const Drawer: React.FC<IDrawerProps> = (props) => {
-    let drawerRef = useRef<HTMLDivElement>();
-
-    const { visible, style, className } = props
+    const drawerRef = useRef<HTMLDivElement>(judgeDOMExitAndCreateDOM("le-drawer-wrapper") as HTMLDivElement);
+    const { visible, onClose, style, className } = props
+    const [visibleInner, setVisibleInner] = useState<boolean>(visible)
 
     const classes = classnames("le-drawer", className, {
 
     })
 
     useEffect(() => {
-        if (visible) {
-            drawerRef.current = judgeDOMExitAndCreateDOM("le-drawer-wrapper") as HTMLDivElement;
-        }
-        return () => {
-            drawerRef.current?.remove();
-        }
+        setVisibleInner(visible)
     }, [visible])
 
-    return drawerRef.current ? ReactDOM.createPortal(
-        <div className={classes} style={style}>
+    const handleClickMask = () => {
+        setVisibleInner(false)
+        onClose && onClose()
+    }
+
+    return visibleInner ? ReactDOM.createPortal(
+        <div className={classes} style={style} onClick={handleClickMask}>
             <div className="le-drawer-content">
                 {props.children}
             </div>
