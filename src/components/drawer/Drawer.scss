@@ -12,13 +12,59 @@
   z-index: $drawerZIndex;
 
   .le-drawer-content {
-    width: 520px;
-    min-height: 100px;
+    min-width: 300px;
     background-color: #fff;
     border: 0;
-    border-radius: 2px;
     pointer-events: auto;
-    margin-top: 140px;
     box-shadow: $drawerShadow;
+    position: absolute;
+    animation: fadeInRight linear 300ms;
+  }
+  &.le-drawer-mask {
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+  &.le-drawer-right {
+    .le-drawer-content {
+      right: 0;
+      height: 100%;
+    }
+  }
+  &.le-drawer-left {
+    .le-drawer-content {
+      left: 0;
+      height: 100%;
+    }
+  }
+  &.le-drawer-top {
+    .le-drawer-content {
+      top: 0;
+      width: 100%;
+      min-height: 200px;
+    }
+  }
+  &.le-drawer-bottom {
+    .le-drawer-content {
+      bottom: 0;
+      width: 100%;
+      min-height: 200px;
+    }
+  }
+  @keyframes fadeInRight {
+    0% {
+      transform: translateX(400px);
+    }
+
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  @keyframes fadeOutRight {
+    0% {
+      transform: translateX(0px);
+    }
+
+    100% {
+      transform: translateX(400px);
+    }
   }
 }
