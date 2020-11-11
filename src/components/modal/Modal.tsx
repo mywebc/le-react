@@ -30,7 +30,6 @@ type staticModalMethods = {
 
 const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, onCloseIcon, content, callType, okText, cancelText, footer, className, style } = props
-	const [isShow, setShow] = useState<boolean>(false)
 
 	const classes = classnames("le-modal", className, {
 		"le-modal-mask": mask
@@ -53,24 +52,14 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 		};
 	}, []);
 
-	useEffect(() => {
-		setShow(visible)
-	}, [visible])
-
-	const toggleModalVisible = () => {
-		setShow(false)
-		onCancel && onCancel()
-	}
-
 	const handleCloseIcon = () => {
-		toggleModalVisible()
+		handleCancel()
 		onCloseIcon && onCloseIcon()
 	}
 
 	const toggleModalVisibleByMask = () => {
 		if (!maskClosable) return;
-		setShow(false)
-		onCancel && onCancel()
+		handleCancel()
 	}
 
 	const handleContentClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -86,7 +75,7 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 	}
 
 	return (
-		isShow ? ReactDOM.createPortal((
+		visible ? ReactDOM.createPortal((
 			<div className={classes} onClick={toggleModalVisibleByMask} style={style}>
 				<div className="le-modal-content-wrapper" onClick={handleContentClick}>
 					{title && (
@@ -130,3 +119,4 @@ Modal.open = (options: IModalProps) => {
 }
 
 export default Modal
+
