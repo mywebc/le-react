@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, ReactNode } from "react"
+import React, { useRef, useEffect, ReactNode } from "react"
 import "./Modal.scss"
 import classnames from "classnames"
 import ReactDOM from "react-dom"
@@ -28,8 +28,23 @@ type staticModalMethods = {
 	open: Function;
 }
 
-const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
-	const { visible, mask, title, onCancel, onConfirm, maskClosable, closeIcon, onCloseIcon, content, callType, okText, cancelText, footer, className, style } = props
+const Modal: React.FC<IModalProps> & staticModalMethods = ({
+	visible = false,
+	mask = true,
+	title,
+	onCancel,
+	onConfirm,
+	maskClosable = true,
+	closeIcon = "close",
+	onCloseIcon,
+	content,
+	callType = "HTML",
+	okText,
+	cancelText,
+	footer,
+	className,
+	style,
+	children }) => {
 
 	const classes = classnames("le-modal", className, {
 		"le-modal-mask": mask
@@ -86,7 +101,7 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 							</div>
 						</div>
 					)}
-					<div className="le-modal-content-inner">{callType === "HTML" ? props.children : content}</div>
+					<div className="le-modal-content-inner">{callType === "HTML" ? children : content}</div>
 					{footer === null ? null : (
 						<div className="le-modal-content-footer">
 							<div className="btn_wrapper">
@@ -103,14 +118,6 @@ const Modal: React.FC<IModalProps> & staticModalMethods = (props) => {
 			</div>
 		), modalEl.current) : null
 	)
-}
-
-Modal.defaultProps = {
-	visible: false,
-	mask: true,
-	closeIcon: "close",
-	maskClosable: true,
-	callType: "HTML"
 }
 
 Modal.open = (options: IModalProps) => {

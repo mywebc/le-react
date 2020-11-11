@@ -19,8 +19,7 @@ interface IButtonProps {
     style?: React.CSSProperties
 }
 
-const Button: React.FC<IButtonProps> = (props) => {
-    const { type, className, disabled, size, loading, style, ...rest } = props
+const Button: React.FC<IButtonProps> = ({ type, className, disabled = false, size, loading = false, style, children, ...rest }) => {
     const classes = classnames("le-button", className, {
         [`le-btn-${type}`]: type,
         "le-btn-disabled": disabled,
@@ -33,14 +32,9 @@ const Button: React.FC<IButtonProps> = (props) => {
     return (
         <button className={classes} type="button" style={style} {...rest}>
             <span className={loadingClasses}></span>
-            {props.children}
+            {children}
         </button>
     )
-}
-
-Button.defaultProps = {
-    disabled: false,
-    loading: false
 }
 
 export default Button;

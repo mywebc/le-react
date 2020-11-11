@@ -23,8 +23,7 @@ const characterOrigin = [
 	<Icon name="collection-fill" />
 ]
 
-const Rate: React.FC<IRateProps> = (props) => {
-	const { defaultValue, disabled, allowClear, allowHalf, character, onChange, onHoverChange, className, style } = props
+const Rate: React.FC<IRateProps> = ({ defaultValue, disabled, allowClear, allowHalf, character, onChange, onHoverChange, className, style }) => {
 	const [currentSelect, setSelect] = useState<number>(0);
 	const [currentHover, setHover] = useState<number>(0);
 	const [halfSelected, setHalfSelected] = useState<number>(-1);

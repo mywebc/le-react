@@ -8,8 +8,7 @@ interface IAffixProps {
   style?: React.CSSProperties
 }
 
-const Affix: React.FC<IAffixProps> = (props) => {
-  const { offsetTop, className, style } = props;
+const Affix: React.FC<IAffixProps> = ({ offsetTop = 0, className, style, children }) => {
   const originTopRef = useRef(0)
   const affixRef = useRef<HTMLDivElement>(null)
 
@@ -49,13 +48,9 @@ const Affix: React.FC<IAffixProps> = (props) => {
 
   return (
     <div className={classes} style={style} ref={affixRef}>
-      {props.children}
+      {children}
     </div>
   )
-}
-
-Affix.defaultProps = {
-  offsetTop: 0
 }
 
 export default Affix

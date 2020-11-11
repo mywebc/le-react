@@ -14,7 +14,7 @@ const App = () => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const onClose = () => {
-    console.log("test");
+    setVisible(false)
   }
 
   const handleClick = () => {
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <Button onClick={handleClick}>open</Button>
-      {/* <Drawer
+      <Drawer
         title={"Basic Drawer"}
         placement="right"
         closable={false}
@@ -34,14 +34,14 @@ const App = () => {
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
-      </Drawer> */}
+      </Drawer>
 
-      <Modal visible={visible} title={"title"} onCancel={ () => setVisible(false)}>
+      {/* <Modal visible={visible} title={"title"} onCancel={ () => setVisible(false)}>
         <p>content</p>
         <p>content</p>
         <p>content</p>
         <p>content</p>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

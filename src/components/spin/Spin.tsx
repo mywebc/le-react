@@ -13,8 +13,7 @@ interface ISpinProps {
     style?: React.CSSProperties
 }
 
-const Spin: React.FC<ISpinProps> = (props) => {
-    const { className, style, size, tip, spinning } = props
+const Spin: React.FC<ISpinProps> = ({ className, style, size, tip, spinning = true }) => {
 
     const classes = classnames("le-spin", className, {
         [`le-spin-${size}`]: size,
@@ -26,13 +25,10 @@ const Spin: React.FC<ISpinProps> = (props) => {
             <div className="le-icon-wrapper">
                 <Icon name={"loading"} />
             </div>
-            {props.tip && <div className="le-spin-txt">{tip}</div>}
+            {tip && <div className="le-spin-txt">{tip}</div>}
         </div>
     )
 }
 
-Spin.defaultProps = {
-    spinning: true
-}
 
 export default Spin;

@@ -45,8 +45,7 @@ const iconTypeArr: iconType[] = [
   { type: "warning", name: "warning-fill", fill: "#e69b2b" },
 ]
 
-const Message: React.FC<IMessageProps> & modeType = (props) => {
-  const { content, onClose, icon, type, duration, showIcon, className, style } = props
+const Message: React.FC<IMessageProps> & modeType = ({ content, onClose, icon, type, duration = 2000, showIcon = true, className, style }) => {
 
   const [isShowMessage, setMessage] = useState<boolean>(true);
   const [currentIcon, setIcon] = useState<iconType>()
@@ -99,11 +98,6 @@ const Message: React.FC<IMessageProps> & modeType = (props) => {
       </div>
     </div>
   )
-}
-
-Message.defaultProps = {
-  showIcon: true,
-  duration: 2000
 }
 
 const isMessageWrapperExist = () => {

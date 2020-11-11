@@ -42,8 +42,16 @@ const iconTypeArr: iconType[] = [
   { type: "open", name: "", fill: "#409eff" }
 ]
 
-const Notification: React.FC<INotificationProps> & staticMethodsType = (props) => {
-  const { message, description, duration, type, icon, placement, onClose, className, style } = props
+const Notification: React.FC<INotificationProps> & staticMethodsType = ({
+  message,
+  description = 4000,
+  duration,
+  type = "open",
+  icon,
+  placement = "topRight",
+  onClose,
+  className,
+  style }) => {
   const [isShowNotification, setNotification] = useState<boolean>(true)
   const [currentType, setType] = useState<iconType>()
 
@@ -128,7 +136,6 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = (props) =
   </div>
 }
 
-
 const isNotificationExist = (placement: notificationPlacement | undefined) => {
   // 判断是否有节点,没有则创建返回
   const notificationWrapper = judgeDOMExitAndCreateDOM(`le-notification-wrapper-${placement ? placement : "topRight"}`)
@@ -164,10 +171,6 @@ Notification.info = (options: INotificationProps) => {
   renderDom(options, "info")
 }
 
-Notification.defaultProps = {
-  duration: 4000,
-  type: "open",
-  placement: "topRight"
-}
+
 
 export default Notification

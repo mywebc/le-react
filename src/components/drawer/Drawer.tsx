@@ -10,36 +10,33 @@ interface IDrawerProps {
     placement?: "top" | "right" | "bottom" | "left";
     closable?: boolean;
     onClose?: () => any;
+    maskClosable?: boolean;
     style?: React.CSSProperties;
     className?: string;
 }
 
-const Drawer: React.FC<IDrawerProps> = (props) => {
+const Drawer: React.FC<IDrawerProps> = ({ visible, onClose, maskClosable = true, style, className, children }) => {
     const drawerRef = useRef<HTMLDivElement>(judgeDOMExitAndCreateDOM("le-drawer-wrapper") as HTMLDivElement);
-    const { visible, onClose, style, className } = props
-    const [visibleInner, setVisibleInner] = useState<boolean>(visible)
 
     const classes = classnames("le-drawer", className, {
 
     })
 
-    useEffect(() => {
-        setVisibleInner(visible)
-    }, [visible])
-
     const handleClickMask = () => {
-        setVisibleInner(false)
+        if (!maskClosable) return;
         onClose && onClose()
     }
 
-    return visibleInner ? ReactDOM.createPortal(
+    return visible ? ReactDOM.createPortal(
         <div className={classes} style={style} onClick={handleClickMask}>
             <div className="le-drawer-content">
-                {props.children}
+                {children}
             </div>
         </div>,
         drawerRef.current
     ) : null
 }
+
+
 
 export default Drawer

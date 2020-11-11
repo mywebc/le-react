@@ -12,15 +12,14 @@ interface ISwitchProps {
   style?: React.CSSProperties
 }
 
-const Switch: React.FC<ISwitchProps> = (props) => {
+const Switch: React.FC<ISwitchProps> = ({ disabled = false, loading = false, size, defaultChecked = false, onChange, style, className }) => {
 
-  const { disabled, loading, size, onChange, style, className } = props
   const [value, setValue] = useState<boolean>(false)
 
   useEffect(() => {
-    const checked = props.defaultChecked || false
+    const checked = defaultChecked || false
     setValue(checked)
-  }, [props.defaultChecked])
+  }, [defaultChecked])
 
 
   const triggleClick: React.MouseEventHandler = e => {
@@ -43,12 +42,6 @@ const Switch: React.FC<ISwitchProps> = (props) => {
       </span>
     </button>
   )
-}
-
-Switch.defaultProps = {
-  defaultChecked: false,
-  disabled: false,
-  loading: false,
 }
 
 export default Switch;
