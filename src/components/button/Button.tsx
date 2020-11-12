@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import classnames from "classnames"
 import "./Button.scss"
 
@@ -19,7 +19,7 @@ interface IButtonProps {
     style?: React.CSSProperties
 }
 
-const Button: React.FC<IButtonProps> = ({ type, className, disabled = false, size, loading = false, style, children, ...rest }) => {
+const Button: React.FC<IButtonProps> = memo(({ type, className, disabled = false, size, loading = false, style, children, ...rest }) => {
     const classes = classnames("le-button", className, {
         [`le-btn-${type}`]: type,
         "le-btn-disabled": disabled,
@@ -35,6 +35,6 @@ const Button: React.FC<IButtonProps> = ({ type, className, disabled = false, siz
             {children}
         </button>
     )
-}
+})
 
 export default Button;

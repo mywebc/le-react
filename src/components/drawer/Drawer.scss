@@ -19,6 +19,28 @@
     box-shadow: $drawerShadow;
     position: absolute;
     animation: fadeInRight linear 300ms;
+    .le-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+      border-radius: 2px 2px 0 0;
+      .le-icon {
+        cursor: pointer;
+      }
+    }
+    .le-drawer-body {
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      padding: 24px;
+      overflow: auto;
+      font-size: 14px;
+      line-height: 1.5715;
+      word-wrap: break-word;
+    }
   }
   &.le-drawer-mask {
     background-color: rgba(0, 0, 0, 0.45);
@@ -33,6 +55,7 @@
     .le-drawer-content {
       left: 0;
       height: 100%;
+      animation: fadeInLeft linear 300ms;
     }
   }
   &.le-drawer-top {
@@ -40,6 +63,7 @@
       top: 0;
       width: 100%;
       min-height: 200px;
+      animation: fadeInTop linear 300ms;
     }
   }
   &.le-drawer-bottom {
@@ -47,6 +71,7 @@
       bottom: 0;
       width: 100%;
       min-height: 200px;
+      animation: fadeInBottom linear 300ms;
     }
   }
   @keyframes fadeInRight {
@@ -58,13 +83,31 @@
       transform: translateX(0px);
     }
   }
-  @keyframes fadeOutRight {
+  @keyframes fadeInLeft {
     0% {
-      transform: translateX(0px);
+      transform: translateX(-400px);
     }
 
     100% {
-      transform: translateX(400px);
+      transform: translateX(0px);
+    }
+  }
+  @keyframes fadeInTop {
+    0% {
+      transform: translateY(-400px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  @keyframes fadeInBottom {
+    0% {
+      transform: translateY(400px);
+    }
+
+    100% {
+      transform: translateY(0px);
     }
   }
 }

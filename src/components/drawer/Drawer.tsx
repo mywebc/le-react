@@ -1,8 +1,9 @@
-import React, { useRef } from "react"
+import React, { useRef, memo } from "react"
 import { judgeDOMExitAndCreateDOM } from "../../utils";
 import classnames from "classnames"
 import ReactDOM from "react-dom";
 import "./Drawer.scss"
+import Icon from "../icon/Icon";
 
 interface IDrawerProps {
 	title: string;
@@ -16,7 +17,18 @@ interface IDrawerProps {
 	className?: string;
 }
 
-const Drawer: React.FC<IDrawerProps> = ({ visible, onClose, maskClosable = true, mask = true, placement = "right", style, className, children }) => {
+const Drawer: React.FC<IDrawerProps> = memo(({
+	title,
+	visible,
+	onClose,
+	maskClosable = true,
+	mask = true,
+	closable = true,
+	placement = "right",
+	style,
+	className,
+	children
+}) => {
 	const drawerRef = useRef<HTMLDivElement>(judgeDOMExitAndCreateDOM("le-drawer-wrapper") as HTMLDivElement);
 
 	const classes = classnames("le-drawer", className, {
@@ -29,15 +41,22 @@ const Drawer: React.FC<IDrawerProps> = ({ visible, onClose, maskClosable = true,
 		onClose && onClose()
 	}
 
+	const handleClose = () => {
+		onClose && onClose()
+	}
+
 	return visible ? ReactDOM.createPortal(
 		<div className={classes} style={style} onClick={handleClickMask}>
 			<div className="le-drawer-content">
-				{children}
+				<div className="le-drawer-header">
+					<div>{title}</div>
+					{closable && <div onClick={handleClose}><Icon name={"close"} /></div>}
+				</div>
+				<div className="le-drawer-body">{children}</div>
 			</div>
 		</div>,
 		drawerRef.current
 	) : null
-}
+})
 
 export default Drawer
-  

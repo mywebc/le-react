@@ -40,8 +40,8 @@ const App = () => {
       <Button onClick={handleNotification1}>Notification</Button>
       <Drawer
         title={"Basic Drawer"}
-        placement="right"
-        closable={false}
+        placement="bottom"
+        closable={true}
         onClose={onClose}
         visible={visible}
       >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, memo } from "react"
 import classnames from "classnames"
 import "./HomePage.scss"
 import ReactDOM from "react-dom"
