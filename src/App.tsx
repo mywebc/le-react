@@ -21,9 +21,23 @@ const App = () => {
     setVisible(true)
   }
 
+  const handleNotification = () => {
+    Notification.open({
+      message: "这是一条test"
+    })
+  }
+
+  const handleNotification1 = () => {
+    Notification.success({
+      message: "这是一条test"
+    })
+  }
+
   return (
     <div className="App">
       <Button onClick={handleClick}>open</Button>
+      <Button onClick={handleNotification}>Notification</Button>
+      <Button onClick={handleNotification1}>Notification</Button>
       <Drawer
         title={"Basic Drawer"}
         placement="right"

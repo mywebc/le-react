@@ -86,7 +86,7 @@
   margin-bottom: 10px;
 
   & .toast_main {
-    display: inline-flex;
+    display: flex;
     box-shadow: $notificationBoxShadow;
     pointer-events: all;
     background: #fff;
@@ -101,6 +101,7 @@
     }
 
     & .main_right {
+      flex: 1;
       & .main_header {
         display: flex;
         justify-content: space-between;
