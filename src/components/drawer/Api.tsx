@@ -27,43 +27,64 @@ const Api = () => {
   const dataSource = [
     {
       key: '1',
-      param: 'type',
-      explain: '按钮类型',
-      type: `"primary" | "dashed" | "text" | "info" | "success" | "warning" | "error" | "text" | "info"`,
+      param: 'title',
+      explain: 'drawer标题',
+      type: `string`,
       defaultValue: "-"
     },
     {
       key: '2',
-      param: 'disabled',
-      explain: '禁用状态',
+      param: 'visible',
+      explain: 'Drawer是否可见',
       type: `boolean`,
       defaultValue: "false"
     },
     {
       key: '3',
-      param: 'size',
-      explain: '按钮尺寸大小',
-      type: `large | small`,
-      defaultValue: "-"
+      param: 'closable',
+      explain: '是否显示关闭图标',
+      type: `boolean`,
+      defaultValue: "true"
     },
     {
       key: '4',
-      param: 'loading',
-      explain: '加载状态',
+      param: 'mask',
+      explain: '是否显示遮罩层',
       type: 'boolean',
-      defaultValue: "false"
+      defaultValue: "true"
     },
     {
       key: '5',
+      param: 'maskClosable',
+      explain: '遮罩层是否支持关闭',
+      type: 'boolean',
+      defaultValue: "true"
+    },
+    {
+      key: '6',
+      param: 'placement',
+      explain: 'Drawer的方位,可选 top right bottom left',
+      type: 'string',
+      defaultValue: "right"
+    },
+    {
+      key: '7',
+      param: 'onClose',
+      explain: 'Drawer关闭回调',
+      type: '() => void',
+      defaultValue: "-"
+    },
+    {
+      key: '8',
       param: 'className',
-      explain: '自定义 Button 类名',
+      explain: '自定义 Drawer 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
-      key: '6',
+      key: '9',
       param: 'style',
-      explain: '自定义 Button 样式',
+      explain: '自定义 Drawer 样式',
       type: 'React.CSSProperties',
       defaultValue: "-"
     },

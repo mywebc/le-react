@@ -17,10 +17,41 @@ import Api from "./Api"
 <Playground>
     <div className="basis">
         <Button>default</Button> 
+        <Drawer
+          title={"Basic Drawer"}
+          onClose={()=>{/*...doclose*/}}
+          visible={false}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
     </div>
 </Playground>
 
-## APi
+## 自定义位置
+<p>通过placement自定义设置滑出位置,可选有right,bottom,left,top,默认为right</p>
 
+<Playground>
+    <div className="basis">
+        <Button>default</Button> 
+        <Button placement={"top"}>top</Button> 
+        <Button placement={"left"}>left</Button> 
+        <Button placement={"bottom"}>bottom</Button> 
+        <Drawer
+          title={"Basic Drawer"}
+          onClose={()=>{/*...doclose*/}}
+          visible={false}
+          placement={"right"}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+    </div>
+</Playground>
+
+## Api
 <Api/>
+
 

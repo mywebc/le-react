@@ -1,8 +1,36 @@
 import Button from "../button/Button"
-import React from "react"
+import Drawer from "./Drawer"
+import React, { useState } from "react"
 
-const Demo:React.FC = React.memo(() => {
+interface DemoProps {
+  placement?: "top" | "right" | "bottom" | "left"
+}
+
+export const Demo: React.FC<DemoProps> = React.memo(({ placement, children }) => {
+
+  const [visible, setVisible] = useState(false)
+
+  const onClose = () => {
+    setVisible(false)
+  }
+
+  const open = () => {
+    setVisible(true)
+  }
+
   return (
-    <div>asda</div>
+    <>
+      <Button onClick={open}>{children}</Button>
+      <Drawer
+        title={"Basic Drawer"}
+        onClose={onClose}
+        visible={visible}
+        placement={placement}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
+    </>
   )
 })
