@@ -29,6 +29,9 @@ const Drawer: React.FC<IDrawerProps> = memo(({
 	className,
 	children
 }) => {
+
+	if(typeof document === "undefined") return <div></div>
+
 	const drawerRef = useRef<HTMLDivElement>(judgeDOMExitAndCreateDOM("le-drawer-wrapper") as HTMLDivElement);
 
 	const classes = classnames("le-drawer", className, {

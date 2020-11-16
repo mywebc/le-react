@@ -46,6 +46,8 @@ const Modal: React.FC<IModalProps> & staticModalMethods = ({
 	style,
 	children }) => {
 
+	if(typeof document === "undefined") return <div></div>
+
 	const classes = classnames("le-modal", className, {
 		"le-modal-mask": mask
 	})

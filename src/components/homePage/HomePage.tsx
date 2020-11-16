@@ -3,12 +3,14 @@ import "./HomePage.scss"
 import ReactDOM from "react-dom"
 
 type HomePageStaticMethods = {
-  open: Function;
+  // open: Function;
 }
 
 const HomePage: React.FC & HomePageStaticMethods = () => {
 
-  const homePageWrapper = useRef(judgeDOMExitAndCreateDOMInner("le-home-page-wrapper"))
+	if(typeof document === "undefined") return <div></div>
+
+  const homePageWrapper = useRef(judgeDOMExitAndCreateDOMInner("le-home-page-wrapper")) as React.MutableRefObject<Element>
 
   const toggleHome = () => {
     window.location.href = window.location.origin + "/gettingStarted"
@@ -30,13 +32,14 @@ const HomePage: React.FC & HomePageStaticMethods = () => {
   )
 }
 
-HomePage.open = () => {
-  const homePageWrapper = judgeDOMExitAndCreateDOMInner("le-home-page-wrapper");
-  ReactDOM.render(<HomePage />, homePageWrapper)
-}
+// HomePage.open = () => {
+//   const homePageWrapper = judgeDOMExitAndCreateDOMInner("le-home-page-wrapper");
+//   ReactDOM.render(<HomePage />, homePageWrapper)
+// }
 
 
 const judgeDOMExitAndCreateDOMInner = (id: string) => {
+  if(typeof document === "undefined") return
   let domWrapper = document.querySelector(`#${id}`);
   if (domWrapper === null) {
     domWrapper = document.createElement("div");
