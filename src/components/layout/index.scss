@@ -1,0 +1,21 @@
+.le-layout {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  &.hasSide {
+    flex-direction: row;
+  }
+}
+
+.le-layout-header {
+}
+
+.le-layout-content {
+  flex-grow: 1;
+}
+
+.le-layout-footer {
+}
+
+.le-layout-side {
+}
