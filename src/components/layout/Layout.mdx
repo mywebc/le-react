@@ -1,0 +1,67 @@
+---
+name: Layout
+menu: General
+---
+
+import { Playground } from 'docz'
+import { Layout, Header, Footer, Content, Side } from "./index.ts"
+
+
+### Layout布局
+<p>协助进行页面级整体布局。</p>
+
+## 布局演示
+
+<Playground>
+  <div className="layout-demo-1">
+    <Layout>
+      <Header >Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+</Playground>
+
+<Playground>
+  <div className="layout-demo-2">
+    <Layout>
+      <Header>Header</Header>
+      <Layout>
+        <Side>Side</Side>
+        <Content>Content</Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+</Playground>
+
+<Playground>
+  <div className="layout-demo-2">
+    <Layout>
+      <Header>Header</Header>
+      <Layout>
+        <Content>Content</Content>
+        <Side>Side</Side>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+</Playground>
+
+<Playground>
+  <div className="layout-demo-3">
+    <Layout>
+      <Side>Side</Side>
+      <Layout>
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </Layout>
+  </div>
+</Playground>
+
+
+
+
+

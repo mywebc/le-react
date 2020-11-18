@@ -1,28 +1,102 @@
 .basis {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    & > .le-button {
-        margin-right: 8px;
-    }
-    & > .le-btn-group {
-        margin-right: 8px;
-    }
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	& > .le-button {
+		margin-right: 8px;
+	}
+	& > .le-btn-group {
+		margin-right: 8px;
+	}
 
-    & > .le-switch {
-        margin-right: 8px;
-    }
-    & > .le-spin {
-        margin-right: 8px;
-    }
-    & > .le-icon {
-        margin-right: 8px;
-    }
-    & > .le-rate {
-        margin-right: 8px;
-    }
-
+	& > .le-switch {
+		margin-right: 8px;
+	}
+	& > .le-spin {
+		margin-right: 8px;
+	}
+	& > .le-icon {
+		margin-right: 8px;
+	}
+	& > .le-rate {
+		margin-right: 8px;
+	}
 }
+
+.layout-demo-1 {
+	color: #fff;
+	width: 100%;
+	& > .le-layout {
+		.le-layout-header {
+			background-color: #7dbcea;
+			height: 80px;
+		}
+		.le-layout-content {
+			background-color: rgba(16, 142, 233, 1);
+			height: 200px;
+		}
+		.le-layout-side {
+			background-color: #3ba0e9;
+			height: 80px;
+		}
+		.le-layout-footer {
+			background-color: #7dbcea;
+			height: 80px;
+		}
+	}
+}
+.layout-demo-2 {
+	color: #fff;
+	width: 100%;
+	& > .le-layout {
+		.le-layout-header {
+			background-color: #7dbcea;
+			height: 80px;
+		}
+		& > .le-layout {
+			.le-layout-content {
+				background-color: rgba(16, 142, 233, 1);
+				height: 200px;
+			}
+			.le-layout-side {
+				background-color: #3ba0e9;
+				height: 200px;
+				width: 100px;
+			}
+		}
+		.le-layout-footer {
+			background-color: #7dbcea;
+			height: 80px;
+		}
+	}
+}
+.layout-demo-3 {
+	color: #fff;
+	width: 100%;
+
+	& > .le-layout {
+		.le-layout-side {
+			background-color: #3ba0e9;
+			height: 360px;
+			width: 100px;
+		}
+		& > .le-layout {
+			.le-layout-header {
+				background-color: #7dbcea;
+				height: 80px;
+			}
+			.le-layout-content {
+				background-color: rgba(16, 142, 233, 1);
+				height: 200px;
+			}
+			.le-layout-footer {
+				background-color: #7dbcea;
+				height: 80px;
+			}
+		}
+	}
+}
+
 p {
-    font-size: 14px;
+	font-size: 14px;
 }

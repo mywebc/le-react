@@ -40,11 +40,11 @@ const App = () => {
       <Button onClick={handleNotification}>Notification</Button>
       <Button onClick={handleNotification1}>Notification</Button>
 
-      {/* <Layout>
+      <Layout>
         <Header style={{ backgroundColor: "#7dbcea", height: 80 }}>Header</Header>
         <Content style={{ backgroundColor: "rgba(16, 142, 233, 1)", height: 200 }}>Content</Content>
         <Footer style={{ backgroundColor: "#7dbcea", height: 80 }}>Footer</Footer>
-      </Layout> */}
+      </Layout>
       <p></p>
       <Layout>
         <Side style={{ backgroundColor: "#7dbcea", height: 200, width: 100 }}>Side</Side>
@@ -61,7 +61,7 @@ const App = () => {
       </Layout>
 
       <Header>
-       1231231231
+        1231231231
       </Header>
     </div>
   );
