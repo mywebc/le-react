@@ -1,0 +1,21 @@
+.le-carousel {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  .le-carousel-container {
+    display: flex;
+  }
+  .arrow_left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    cursor: pointer;
+  }
+  .arrow_right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    cursor: pointer;
+  }
+}
