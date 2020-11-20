@@ -3,12 +3,14 @@ import classnames from "classnames"
 import "./Carousel.scss"
 
 interface ICarouselProps {
+  dots?: boolean
+  duration?: number
   afterChange?: (index: number) => void
   className?: string;
   style?: React.CSSProperties
 }
 
-const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, className, style }) => {
+const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, duration, children, className, style }) => {
 
   const [current, setCurrent] = useState(1)
 
@@ -20,6 +22,8 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, classN
 
   const currentRef = useRef(0)
 
+  let autoTimer = useRef<NodeJS.Timeout>()
+
   useEffect(() => {
     const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
     cloneNode();
@@ -30,6 +34,11 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, classN
       containerRef.removeEventListener('transitionend', judgeExitTransition);
       containerRef.addEventListener('transitionrun', judgeTransitionRun);
     }
+  }, [])
+
+  useEffect(() => {
+    duration && autoPlay()
+    return () => { autoTimer.current && duration && clearInterval(autoTimer.current) }
   }, [])
 
   useEffect(() => {
@@ -51,16 +60,6 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, classN
       }
     }
   }, [transitionTime])
-
-  const toRight = useCallback(() => {
-    if (isTransitionRunning) return
-    setCurrent(_ => _ + 1)
-  }, [])
-
-  const toLeft = useCallback(() => {
-    if (isTransitionRunning) return
-    setCurrent(_ => _ - 1)
-  }, [])
 
   const judgeExitTransition = useCallback(() => {
     afterChange && afterChange(currentRef.current);
@@ -93,17 +92,48 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, classN
     }
   }, [])
 
+  const handleGoToTarget = useCallback((e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    if (isTransitionRunning) return
+    const target = (e.target as HTMLSpanElement).getAttribute("data-id")
+    setCurrent(Number(target))
+  }, [])
+
+  const autoPlay = useCallback(() => {
+    if (duration) {
+      autoTimer.current = setInterval(() => {
+        setCurrent(_ => _ + 1)
+      }, duration)
+    }
+  }, [])
+
+  const handleOnMouseEnter = useCallback(() => {
+    if (autoTimer.current && duration) {
+      clearInterval(autoTimer.current)
+      autoTimer.current = undefined
+    }
+  }, [])
+  const handleOnMouseLeave = useCallback(() => {
+    autoPlay()
+  }, [])
+
   return (
-    <div className={classnames("le-carousel", className)} style={style}>
+    <div className={classnames("le-carousel", className)} style={style} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
       <div className={classnames("le-carousel-container", {
         "transitionTime": transitionTime
       })} ref={leCarouselContainerRef}>
         {React.Children.map(children, (_, i) => _)}
       </div>
-      <span className="arrow_left" onClick={toLeft}>left</span>
-      <span className="arrow_right" onClick={toRight}>right</span>
-    </div>
+      {dots && <div className="dotsWrapper">
+        {React.Children.map(children, (_, i) => <span
+          className={classnames("dot", { active: current === i + 1 })}
+          onClick={handleGoToTarget}
+          key={i}
+          data-id={i + 1}
+        ></span>)}
+      </div>}
+    </div >
   )
 })
 
 export default Carousel
+

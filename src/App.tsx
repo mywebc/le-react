@@ -45,7 +45,7 @@ const App = () => {
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "skyblue" }}>1</div>
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "orange" }}>2</div>
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "red" }}>3</div>
-        <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "yellow" }}>4</div>
+        <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "black" }}>4</div>
       </Carousel>
     </div >
   );

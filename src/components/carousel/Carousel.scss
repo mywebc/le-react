@@ -6,7 +6,7 @@
   .le-carousel-container {
     display: flex;
     &.transitionTime {
-      transition: transform .5s ease;
+      transition: transform 0.5s ease;
     }
   }
   .arrow_left {
@@ -20,5 +20,27 @@
     right: 0;
     top: 50%;
     cursor: pointer;
+  }
+  .dotsWrapper {
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%);
+    .dot {
+      display: block;
+      background-color: #fff;
+      opacity: 0.3;
+      width: 16px;
+      height: 3px;
+      border-radius: 1px;
+      margin: 0 2px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &.active {
+        width: 24px;
+        opacity: 0.9;
+      }
+    }
   }
 }
