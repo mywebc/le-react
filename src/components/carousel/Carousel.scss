@@ -5,8 +5,8 @@
   width: 100%;
   .le-carousel-container {
     display: flex;
-    &.isExitTransition {
-      transition: transform 0.5s ease;
+    &.transitionTime {
+      transition: transform .5s ease;
     }
   }
   .arrow_left {

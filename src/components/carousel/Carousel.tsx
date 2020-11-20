@@ -1,68 +1,90 @@
-import React, { memo, ReactNode, useCallback, useEffect, useRef, useState } from "react"
+import React, { memo, useCallback, useEffect, useRef, useState } from "react"
 import classnames from "classnames"
 import "./Carousel.scss"
 
 interface ICarouselProps {
+  afterChange?: (index: number) => void
   className?: string;
   style?: React.CSSProperties
 }
 
-const Carousel: React.FC<ICarouselProps> = memo(({ children, className, style }) => {
+const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, children, className, style }) => {
 
   const [current, setCurrent] = useState(1)
 
-  const [isExitTransition, setIsExitTransition] = useState(false)
+  const [transitionTime, setTransitionTime] = useState(true)
+
+  const [isTransitionRunning, setIsTransitionRunning] = useState(false)
 
   const leCarouselContainerRef = useRef<HTMLDivElement>(null)
 
+  const currentRef = useRef(0)
 
   useEffect(() => {
-    cloneNode()
-    goto(1)
-    return () => { setIsExitTransition(false) }
+    const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
+    cloneNode();
+    goto(1);
+    containerRef.addEventListener('transitionend', judgeExitTransition);
+    containerRef.addEventListener('transitionrun', judgeTransitionRun);
+    return () => {
+      containerRef.removeEventListener('transitionend', judgeExitTransition);
+      containerRef.addEventListener('transitionrun', judgeTransitionRun);
+    }
   }, [])
 
   useEffect(() => {
-    if (current === (children as any).length + 2) {
-      setIsExitTransition(false)
-      goto(2)
-    } else {
-      setIsExitTransition(true)
+    currentRef.current = current
+    goto(current)
+    if (current === 2 || current === (children as any).length - 1) {
+      setTransitionTime(true)
     }
   }, [current])
 
-  const toRight = useCallback(() => {
-    setCurrent(_ => {
-      let next = _ + 1
-      if (next >= (children as any).length + 2) {
-        next = 1
+  useEffect(() => {
+    if (!transitionTime) {
+      console.log(current);
+      console.log(currentRef.current);
+      if (current === (children as any).length + 1) {
+        setCurrent(1)
+      } else if (current === 0) {
+        setCurrent((children as any).length)
       }
-      goto(next)
-      return next
-    })
+    }
+  }, [transitionTime])
+
+  const toRight = useCallback(() => {
+    if (isTransitionRunning) return
+    setCurrent(_ => _ + 1)
   }, [])
 
   const toLeft = useCallback(() => {
-    setCurrent(_ => {
-      let next = _ - 1
-      if (next < 0) {
-        next = (children as any).length - 1
-      }
-      goto(next)
-      return next
-    })
+    if (isTransitionRunning) return
+    setCurrent(_ => _ - 1)
+  }, [])
+
+  const judgeExitTransition = useCallback(() => {
+    afterChange && afterChange(currentRef.current);
+    setIsTransitionRunning(false)
+    if ((currentRef.current === (children as any).length + 1) || (currentRef.current === 0)) {
+      setTransitionTime(false)
+    }
+  }, [])
+
+  const judgeTransitionRun = useCallback(() => {
+    setIsTransitionRunning(true)
   }, [])
 
   const cloneNode = useCallback(() => {
     const nodeList: HTMLElement[] = [];
-    (leCarouselContainerRef.current as HTMLDivElement).childNodes.forEach(node => {
+    const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
+    containerRef.childNodes.forEach(node => {
       if (node.nodeType === 1) {
         const eleNode = node as HTMLElement
         nodeList.push(eleNode)
       }
     });
-    (leCarouselContainerRef.current as HTMLDivElement).append(nodeList[0].cloneNode(true));
-    (leCarouselContainerRef.current as HTMLDivElement).prepend(nodeList[nodeList.length - 1].cloneNode(true));
+    containerRef.append(nodeList[0].cloneNode(true));
+    containerRef.prepend(nodeList[nodeList.length - 1].cloneNode(true));
   }, [leCarouselContainerRef.current])
 
   const goto = useCallback((target: number) => {
@@ -74,7 +96,7 @@ const Carousel: React.FC<ICarouselProps> = memo(({ children, className, style })
   return (
     <div className={classnames("le-carousel", className)} style={style}>
       <div className={classnames("le-carousel-container", {
-        "isExitTransition": isExitTransition
+        "transitionTime": transitionTime
       })} ref={leCarouselContainerRef}>
         {React.Children.map(children, (_, i) => _)}
       </div>
