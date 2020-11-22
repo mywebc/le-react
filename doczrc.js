@@ -2,17 +2,21 @@ export default {
   typescript: true,
   title: "React",
   menu: [
-    'Getting Started',
+    '快速开始',
     // { name: 'Components', menu: ['Input','Button'] }
-    'General',
-    'Form'
+    '通用',
+    '布局',
+    '导航',
+    '数据录入',
+    '数据展示',
+    '反馈'
   ],
-  themeConfig: { 
+  themeConfig: {
     colors: {
       header: {
         bg: '#fff'
       }
     },
-  } 
+  }
 }
 
