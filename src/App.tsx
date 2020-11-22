@@ -41,7 +41,7 @@ const App = () => {
       <Button onClick={handleNotification}>Notification</Button>
       <Button onClick={handleNotification1}>Notification</Button>
 
-      <Carousel style={{ border: "1px solid #aaa", width: 200 }}>
+      <Carousel style={{ border: "1px solid #aaa", width: 200 }} duration={1000} afterChange={(i) => { console.log("index", i) }}>
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "skyblue" }}>1</div>
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "orange" }}>2</div>
         <div style={{ width: 200, height: 200, textAlign: "center", backgroundColor: "red" }}>3</div>

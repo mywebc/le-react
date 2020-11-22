@@ -44,16 +44,14 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
   useEffect(() => {
     currentRef.current = current
     goto(current)
-    if (current === 2 || current === (children as any).length - 1) {
+    if (current === 2 || current >= (children as any).length - 1) {
       setTransitionTime(true)
     }
   }, [current])
 
   useEffect(() => {
     if (!transitionTime) {
-      console.log(current);
-      console.log(currentRef.current);
-      if (current === (children as any).length + 1) {
+      if (current >= (children as any).length + 1) {
         setCurrent(1)
       } else if (current === 0) {
         setCurrent((children as any).length)
@@ -62,9 +60,13 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
   }, [transitionTime])
 
   const judgeExitTransition = useCallback(() => {
-    afterChange && afterChange(currentRef.current);
+    let afterIndex = currentRef.current
+    if (currentRef.current > (children as any).length) {
+      afterIndex = 1
+    }
+    afterChange && afterChange(afterIndex);
     setIsTransitionRunning(false)
-    if ((currentRef.current === (children as any).length + 1) || (currentRef.current === 0)) {
+    if ((currentRef.current >= (children as any).length + 1) || (currentRef.current === 0)) {
       setTransitionTime(false)
     }
   }, [])
