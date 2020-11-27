@@ -3,11 +3,12 @@ import classnames from "classnames"
 import "./Carousel.scss"
 
 interface ICarouselProps {
-  dots?: boolean
-  duration?: number
-  afterChange?: (index: number) => void
+  dots?: boolean;
+  duration?: number;
+  afterChange?: (index: number) => void;
+  // children: React.JSX.IntrinsicElements[];
   className?: string;
-  style?: React.CSSProperties
+  style?: React.CSSProperties;
 }
 
 const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, duration, children, className, style }) => {
@@ -26,6 +27,7 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
 
   useEffect(() => {
     const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
+    console.log("dasdas", containerRef);
     cloneNode();
     goto(1);
     containerRef.addEventListener('transitionend', judgeExitTransition);
@@ -42,6 +44,7 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
   }, [])
 
   useEffect(() => {
+    if (!children) return
     currentRef.current = current
     goto(current)
     if (current === 2 || current >= (children as any).length - 1) {
@@ -123,7 +126,8 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
       <div className={classnames("le-carousel-container", {
         "transitionTime": transitionTime
       })} ref={leCarouselContainerRef}>
-        {React.Children.map(children, (_, i) => _)}
+        {/* {React.Children.map(children).map((_, i) => _)} */}
+        {/* {children.map(_ => _)} */}
       </div>
       {dots && <div className="dotsWrapper">
         {React.Children.map(children, (_, i) => <span
