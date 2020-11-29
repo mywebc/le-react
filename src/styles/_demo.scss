@@ -21,6 +21,19 @@
 	& > .le-rate {
 		margin-right: 8px;
 	}
+	& > .le-carousel {
+		width: 400px;
+		height: 200px;
+		.item {
+			background: rgb(54, 77, 121);
+			width: 400px;
+			height: 200px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+		}
+	}
 }
 
 .layout-demo-1 {

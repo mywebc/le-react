@@ -5,19 +5,40 @@ menu: 数据展示
 
 import { Playground, Props  } from 'docz'
 import Carousel from "./Carousel"
+import Api from "./Api"
 
 ### Carousel走马灯
 <p>旋转木马，一组轮播的区域。</p> 
 
 ## 基本用法
+<p>基本的用法</p>
 
 <Playground>
-    <div style={{width: 400,height: 200}}> 
-      <Carousel children={[
-        <div>11111</div>,
-        <div>22222</div>,
-        <div>33333</div>,
-        <div>44444</div>,
-      ]}/>
+    <div className="basis"> 
+      <Carousel>
+        <div className="item">1</div>
+        <div className="item">2</div>
+        <div className="item">3</div>
+        <div className="item">4</div>
+      </Carousel>
     </div>
 </Playground>
+
+## 自动播放
+<p>设置 duration 开始自动播放。</p>
+
+<Playground>
+    <div className="basis"> 
+      <Carousel duration={2000}>
+        <div className="item">1</div>
+        <div className="item">2</div>
+        <div className="item">3</div>
+        <div className="item">4</div>
+      </Carousel>
+    </div>
+</Playground>
+
+
+## APi
+
+<Api/>

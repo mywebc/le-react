@@ -26,10 +26,9 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
   let autoTimer = useRef<NodeJS.Timeout>()
 
   useEffect(() => {
-    const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
-    console.log("dasdas", containerRef);
     cloneNode();
     goto(1);
+    const containerRef = (leCarouselContainerRef.current as HTMLDivElement);
     containerRef.addEventListener('transitionend', judgeExitTransition);
     containerRef.addEventListener('transitionrun', judgeTransitionRun);
     return () => {
@@ -126,8 +125,7 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
       <div className={classnames("le-carousel-container", {
         "transitionTime": transitionTime
       })} ref={leCarouselContainerRef}>
-        {/* {React.Children.map(children).map((_, i) => _)} */}
-        {/* {children.map(_ => _)} */}
+        {React.Children.map(children, (Child) => Child)}
       </div>
       {dots && <div className="dotsWrapper">
         {React.Children.map(children, (_, i) => <span
