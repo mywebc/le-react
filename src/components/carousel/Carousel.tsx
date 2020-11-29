@@ -16,7 +16,7 @@ interface CarouselRef {
   prev: () => void;
 }
 
-const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = true, duration, children, className, style }, ref) => {
+const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = true, duration = 0, children, className, style }, ref) => {
 
   const [current, setCurrent] = useState(1)
 
@@ -31,9 +31,9 @@ const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = 
   let autoTimer = useRef<NodeJS.Timeout>()
 
   useImperativeHandle(ref, () => ({
-    goTo: (number) => { goto(number) } ,
-    next: () => {goto(currentRef.current + 1)},
-    prev: () => {goto(currentRef.current - 1)}
+    goTo: (number) => { goto(number) },
+    next: () => { goto(currentRef.current + 1) },
+    prev: () => { goto(currentRef.current - 1) }
   }));
 
   useEffect(() => {
@@ -49,8 +49,8 @@ const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = 
   }, [])
 
   useEffect(() => {
-    duration && autoPlay()
-    return () => { autoTimer.current && duration && clearInterval(autoTimer.current) }
+    duration !== 0 && autoPlay()
+    return () => { autoTimer.current && duration !== 0 && clearInterval(autoTimer.current) }
   }, [])
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = 
   }, [])
 
   const autoPlay = useCallback(() => {
-    if (duration) {
+    if (duration !== 0) {
       autoTimer.current = setInterval(() => {
         setCurrent(_ => _ + 1)
       }, duration)
@@ -122,7 +122,7 @@ const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = 
   }, [])
 
   const handleOnMouseEnter = useCallback(() => {
-    if (autoTimer.current && duration) {
+    if (autoTimer.current && duration !== 0) {
       clearInterval(autoTimer.current)
       autoTimer.current = undefined
     }
