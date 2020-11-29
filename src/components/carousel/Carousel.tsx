@@ -8,6 +8,7 @@ interface ICarouselProps {
   afterChange?: (index: number) => void;
   className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 
 interface CarouselRef {
