@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react"
+import React, { memo, useCallback, useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react"
 import classnames from "classnames"
 import "./Carousel.scss"
 
@@ -6,12 +6,17 @@ interface ICarouselProps {
   dots?: boolean;
   duration?: number;
   afterChange?: (index: number) => void;
-  // children: React.JSX.IntrinsicElements[];
   className?: string;
   style?: React.CSSProperties;
 }
 
-const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, duration, children, className, style }) => {
+interface CarouselRef {
+  goTo: (slide: number) => void;
+  next: () => void;
+  prev: () => void;
+}
+
+const Carousel = forwardRef<CarouselRef, ICarouselProps>(({ afterChange, dots = true, duration, children, className, style }, ref) => {
 
   const [current, setCurrent] = useState(1)
 
@@ -24,6 +29,12 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
   const currentRef = useRef(0)
 
   let autoTimer = useRef<NodeJS.Timeout>()
+
+  useImperativeHandle(ref, () => ({
+    goTo: (number) => { goto(number) } ,
+    next: () => {goto(currentRef.current + 1)},
+    prev: () => {goto(currentRef.current - 1)}
+  }));
 
   useEffect(() => {
     cloneNode();
@@ -140,4 +151,3 @@ const Carousel: React.FC<ICarouselProps> = memo(({ afterChange, dots = true, dur
 })
 
 export default Carousel
-
