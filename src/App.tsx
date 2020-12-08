@@ -50,17 +50,24 @@ const App = () => {
       </Carousel> */}
       <p>icon</p>
       <Icon name={"txt"} />
-      <Icon name={"txt"}/>
-       <Icon name={"pin"}/>
-       <Icon name={"reeor"}/>
-       <Icon name={"close"}/>
-       <Icon name={"share"}/>
-       <Icon name={"sorting"} style={{fill: "#f56c6c"}}/>
-       <Icon name={"flag"} style={{fill: "#409eff"}}/>
-       <Icon name={"Top"} style={{fill: "#219c91"}}/>
-       <Icon name={"video"} style={{fill: "#67c23a"}}/>
-       <Icon name={"vs"} style={{fill: "skyblue"}}/>
-      <Input addonAfter=".com" addonBefore="http://"/>
+      <Icon name={"txt"} />
+      <Icon name={"pin"} />
+      <Icon name={"reeor"} />
+      <Icon name={"close"} />
+      <Icon name={"share"} />
+      <Icon name={"sorting"} style={{ fill: "#f56c6c" }} />
+      <Icon name={"flag"} style={{ fill: "#409eff" }} />
+      <Icon name={"Top"} style={{ fill: "#219c91" }} />
+      <Icon name={"video"} style={{ fill: "#67c23a" }} />
+      <Icon name={"vs"} style={{ fill: "skyblue" }} />
+      <Input 
+      // addonAfter=".com" 
+      // addonBefore="http://" 
+      onChange={(e) => { console.log("change",e) }} 
+      // type={"textarea"} 
+      // prefix={"sa"}
+      clearable
+      />
     </div>
   );
 }

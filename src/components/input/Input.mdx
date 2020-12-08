@@ -5,8 +5,50 @@ menu: 数据录入
 
 import { Playground, Props } from 'docz'
 import  Input from "./Input"
+import Api from "./Api"
 
-## Input
+### Input输入框
+<p>通过鼠标或键盘输入内容，是最基础的表单域的包装。</p> 
 
-<Input />
+#### 何时使用
+* 需要用户输入表单域内容时。
 
+* 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
+
+## 基本使用
+<p>基本使用</p>
+
+<Playground>
+    <Input/>
+</Playground>
+
+## 禁用状态
+<p>设置disabled为true</p>
+
+<Playground>
+    <Input disabled/>
+</Playground>
+
+## 可清空
+<p>设置clearable为true</p>
+
+<Playground>
+    <Input clearable/>
+</Playground>
+
+## 前置 / 后置标签
+<p>用于配置一些固定组合。</p>
+
+<Playground>
+    <Input addonBefore="http://" addonAfter=".com"  />
+</Playground>
+
+## 文本域
+<p>用于输入多行文本信息，通过将 type 属性的值指定为 textarea。</p>
+
+<Playground>
+    <Input type={"textarea"}  />
+</Playground>
+
+## Api
+<Api/>
