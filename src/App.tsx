@@ -10,6 +10,8 @@ import Drawer from "./components/drawer/Drawer"
 import { Layout, Header, Footer, Content, Side } from "./components/layout"
 import Carousel from "./components/carousel/Carousel"
 import Input from "./components/input/Input"
+import Radio from "./components/Radio/Radio";
+import RadioGroup from "./components/Radio/RadioGroup"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
@@ -60,14 +62,25 @@ const App = () => {
       <Icon name={"Top"} style={{ fill: "#219c91" }} />
       <Icon name={"video"} style={{ fill: "#67c23a" }} />
       <Icon name={"vs"} style={{ fill: "skyblue" }} />
-      <Input 
-      // addonAfter=".com" 
-      // addonBefore="http://" 
-      onChange={(e) => { console.log("change",e) }} 
-      // type={"textarea"} 
-      // prefix={"sa"}
-      clearable
+      <Input
+        // addonAfter=".com" 
+        // addonBefore="http://" 
+        onChange={(e) => { console.log("change", e) }}
+        // type={"textarea"} 
+        // prefix={"sa"}
+        clearable
       />
+      <p></p>
+      <Radio label={"备选项"} onChange={(e) => { console.log("radio change", e) }} />
+
+      <RadioGroup value={1}>
+        <Radio label={"备选项A"} value={1} />
+        <Radio label={"备选项B"} value={2} />
+        <Radio label={"备选项C"} value={3} />
+        <Radio label={"备选项D"} value={4} />
+      </RadioGroup>
+
+
     </div>
   );
 }
