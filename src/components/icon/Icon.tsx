@@ -23,7 +23,7 @@ const Icon: React.FC<IIconProps> = ({ iconLibrary = '//at.alicdn.com/t/font_2049
             const targeEl = document.getElementById("icon-library");
             targeEl?.parentNode?.removeChild(targeEl);
         }
-    }, [])
+    }, [iconLibrary])
 
     const classes = classnames("le-icon", className)
 

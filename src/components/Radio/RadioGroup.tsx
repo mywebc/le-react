@@ -20,7 +20,7 @@ const RadioGroup: React.FC<IRadioGroupProps> = memo(({ value, onChange, children
 
 	const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e)
-	}, [])
+	}, [onChange])
 
 	useEffect(() => {
 		if (children && Array.isArray(children)) {

@@ -10,8 +10,8 @@ import Drawer from "./components/drawer/Drawer"
 import { Layout, Header, Footer, Content, Side } from "./components/layout"
 import Carousel from "./components/carousel/Carousel"
 import Input from "./components/input/Input"
-import Radio from "./components/Radio/Radio";
-import RadioGroup from "./components/Radio/RadioGroup"
+import Radio from "./components/radio/Radio";
+import RadioGroup from "./components/radio/RadioGroup"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 

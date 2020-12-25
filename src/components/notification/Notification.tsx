@@ -66,7 +66,7 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = ({
         setNotification(false)
       }, duration)
     }
-  }, [])
+  }, [duration])
 
   useEffect(() => {
     setTimeout(() => {
@@ -88,7 +88,7 @@ const Notification: React.FC<INotificationProps> & staticMethodsType = ({
       }
     }
     setType(newType)
-  }, [])
+  }, [icon, type])
 
   useEffect(() => {
     const notificationWrapper = document.querySelector("#le-notification-wrapper");

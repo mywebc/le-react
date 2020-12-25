@@ -28,7 +28,7 @@ const Input: React.FC<IInputProps> = memo(({ disabled = false, clearable = false
 
 	const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e.target.value)
-	}, [])
+	}, [onChange])
 
 	const clearValue = useCallback(() => {
 		(inputRef.current as HTMLInputElement).value = "";
@@ -38,7 +38,7 @@ const Input: React.FC<IInputProps> = memo(({ disabled = false, clearable = false
 		if (e.charCode === 13) {
 			onPressEnter && onPressEnter(e)
 		}
-	}, [])
+	}, [onPressEnter])
 
 	return (
 		<div className={classes} style={style}>

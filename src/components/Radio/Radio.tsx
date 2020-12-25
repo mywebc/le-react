@@ -24,7 +24,7 @@ const Radio: React.FC<IRadioProps> = memo(({ label, defaultChecked = false, disa
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e)
-    }, [])
+    }, [onChange])
 
     return (
         <div className={classes} style={style}>
