@@ -1,0 +1,53 @@
+---
+name: Radio
+menu: 数据录入
+---
+
+import { Playground, Props  } from 'docz'
+import Radio from "./Radio"
+import RadioGroup from "./RadioGroup"
+import { Api1, Api2 } from "./Api"
+
+### Radio 单选框
+<p>用于在多个备选项中选中单个状态。</p> 
+
+## 基本用法
+<p>最简单的用法</p>
+
+<Playground>
+  <div className="basis">
+      <Radio label="备选项A"/>
+      <Radio label="备选项B" defaultChecked/>
+  </div>
+</Playground>
+
+## 禁用状态
+<p>设置disabled可以禁用</p>
+
+<Playground>
+  <div className="basis">
+      <Radio label="备选项A" disabled/>
+      <Radio label="备选项B" disabled defaultChecked/>
+  </div>
+</Playground>
+
+## 单选项组
+<p>一组互斥的 Radio 配合使用。</p>
+
+<Playground>
+  <div className="basis">
+      <RadioGroup value={1}>
+        <Radio label="备选项A" value={1}/>
+        <Radio label="备选项B" value={2}/>
+        <Radio label="备选项C" value={3}/>
+        <Radio label="备选项D" value={4}/>
+      </RadioGroup>
+  </div>
+</Playground>
+
+## APi
+#### Radio
+<Api1/>
+
+#### RadioGroup
+<Api2/>

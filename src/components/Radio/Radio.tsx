@@ -6,6 +6,7 @@ import "./Radio.scss"
 interface IRadioProps {
     label: string;
     value?: any;
+    defaultValue?: any;
     name?: string;
     disabled?: boolean;
     defaultChecked?: boolean;
@@ -15,7 +16,7 @@ interface IRadioProps {
 }
 
 
-const Radio: React.FC<IRadioProps> = memo(({ label, defaultChecked = false, disabled = false, name, onChange, value, className, style }) => {
+const Radio: React.FC<IRadioProps> = memo(({ label, defaultChecked = false, disabled = false, name, onChange, value, defaultValue, className, style }) => {
 
     const classes = classnames('le-radio', className, {
         'le-radio-disabled': disabled
@@ -27,7 +28,7 @@ const Radio: React.FC<IRadioProps> = memo(({ label, defaultChecked = false, disa
 
     return (
         <div className={classes} style={style}>
-            <input type="radio" id={label} defaultChecked={defaultChecked} onChange={handleOnChange} value={value} name={name} />
+            <input type="radio" id={label} defaultChecked={name === "group" ? defaultValue === value : defaultChecked} onChange={handleOnChange} value={value} name={name} />
             <label htmlFor={label}>{label}</label>
         </div>
     )

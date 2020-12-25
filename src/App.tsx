@@ -73,14 +73,12 @@ const App = () => {
       <p></p>
       <Radio label={"备选项"} onChange={(e) => { console.log("radio change", e) }} />
 
-      <RadioGroup value={1}>
+      <RadioGroup value={4} onChange={(e) => { console.log("group", e) }}>
         <Radio label={"备选项A"} value={1} />
         <Radio label={"备选项B"} value={2} />
         <Radio label={"备选项C"} value={3} />
         <Radio label={"备选项D"} value={4} />
       </RadioGroup>
-
-
     </div>
   );
 }

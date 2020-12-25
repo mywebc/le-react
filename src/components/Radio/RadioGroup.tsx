@@ -45,7 +45,9 @@ const RadioGroup: React.FC<IRadioGroupProps> = memo(({ value, onChange, children
 			{React.Children.map(children, _ => {
 				const childProps = {
 					...(_ as any).props,
-					name: "group"
+					name: "group",
+					defaultValue: value,
+					onChange: handleOnChange
 				}
 				return React.cloneElement(_ as any, childProps)
 			})}
