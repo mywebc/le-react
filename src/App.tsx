@@ -12,6 +12,8 @@ import Carousel from "./components/carousel/Carousel"
 import Input from "./components/input/Input"
 import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup"
+import CheckBox from "./components/checkBox/CheckBox"
+import CheckBoxGroup from "./components/checkBox/CheckBoxGroup"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
@@ -71,14 +73,28 @@ const App = () => {
         clearable
       />
       <p></p>
-      <Radio label={"备选项"} onChange={(e) => { console.log("radio change", e) }} />
+      {/* <Radio label={"备选项"} onChange={(e) => { console.log("radio change", e) }} />
 
       <RadioGroup value={4} onChange={(e) => { console.log("group", e) }}>
         <Radio label={"备选项A"} value={1} />
         <Radio label={"备选项B"} value={2} />
         <Radio label={"备选项C"} value={3} />
         <Radio label={"备选项D"} value={4} />
-      </RadioGroup>
+      </RadioGroup> */}
+
+      <p></p>
+
+      {/* <CheckBox label="备选项A" defaultChecked /> */}
+
+      <CheckBoxGroup defaultValue={["备选项A", "备选项C"]} onChange={(a) => {
+        console.log(a)
+      }}>
+        <CheckBox label="备选项A"  />
+        <CheckBox label="备选项B"  />
+        <CheckBox label="备选项C"  />
+        <CheckBox label="备选项D"  />
+      </CheckBoxGroup>
+
     </div>
   );
 }

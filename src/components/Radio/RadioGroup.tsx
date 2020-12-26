@@ -3,6 +3,7 @@ import classnames from "classnames";
 import Radio from "./Radio"
 
 import "./Radio.scss"
+import { useIsValidChildren } from "../../hooks/useIsValidChildren";
 
 interface IRadioGroupProps {
 	value?: any;
@@ -14,32 +15,14 @@ interface IRadioGroupProps {
 
 const RadioGroup: React.FC<IRadioGroupProps> = memo(({ value, onChange, children, className, style }) => {
 
-	const [isValidChildren, setIsValidChildren] = useState(true)
-
 	const classes = classnames('le-radio-group', className)
 
 	const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e)
 	}, [onChange])
 
-	useEffect(() => {
-		if (children && Array.isArray(children)) {
-			React.Children.map(children, _ => {
-				if ((_ as any).type !== Radio) {
-					console.error("RadioGroup的子组件必须是Radio!")
-					setIsValidChildren(false)
-				}
-			})
-		}
-	}, [children, setIsValidChildren])
-
-	useEffect(() => {
-		React.Children.map(children, _ => {
-
-		})
-
-	}, [children, isValidChildren])
-
+	const { isValidChildren } = useIsValidChildren(children, Radio)
+	
 	return isValidChildren ? (
 		<div className={classes} style={style}>
 			{React.Children.map(children, _ => {
