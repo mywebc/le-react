@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from "./components/button/Button";
 import "./styles/index.scss"
 import "./App.scss"
@@ -19,6 +19,8 @@ type notificationType = "info" | "success" | "error" | "warning" | "open"
 
 const App = () => {
   const [visible, setVisible] = useState<boolean>(false);
+  const checkBoxOptions = ["备选项A", "备选项B", "备选项C", "备选项D"]
+  const [defaultOptions, setDefaultOptions] = useState(["备选项A", "备选项C"])
 
   const onClose = () => {
     setVisible(false)
@@ -39,6 +41,17 @@ const App = () => {
       message: "这是一条test"
     })
   }
+
+  const handleChange = (label: string, checked: boolean) => {
+    if (checked) {
+      setDefaultOptions(checkBoxOptions)
+    } else {
+      setDefaultOptions([])
+    }
+  }
+  useEffect(() => {
+    // console.log("defaultOptions", defaultOptions)
+  }, [defaultOptions])
 
   return (
     <div className="App">
@@ -86,13 +99,15 @@ const App = () => {
 
       {/* <CheckBox label="备选项A" defaultChecked /> */}
 
-      <CheckBoxGroup defaultValue={["备选项A", "备选项C"]} onChange={(a) => {
-        console.log(a)
+      <CheckBox label="全选" indeterminate onChange={handleChange} />
+
+      <CheckBoxGroup defaultValue={defaultOptions} onChange={(a) => {
+        // console.log(a)
       }}>
-        <CheckBox label="备选项A"  />
-        <CheckBox label="备选项B"  />
-        <CheckBox label="备选项C"  />
-        <CheckBox label="备选项D"  />
+        <CheckBox label="备选项A" />
+        <CheckBox label="备选项B" />
+        <CheckBox label="备选项C" />
+        <CheckBox label="备选项D" />
       </CheckBoxGroup>
 
     </div>

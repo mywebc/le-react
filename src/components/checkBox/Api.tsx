@@ -31,56 +31,49 @@ export const Api1 = () => {
         {
             key: '1',
             param: 'label',
-            explain: 'radio文本说明',
+            explain: 'checkBox文本说明',
             type: `string`,
             defaultValue: "-"
         },
         {
             key: '2',
-            param: 'value',
-            explain: 'radio的值',
-            type: `any`,
-            defaultValue: "-"
-        },
-        {
-            key: '3',
             param: 'defaultChecked ',
-            explain: 'radio默认选中状态',
+            explain: 'checkBox默认选中状态',
             type: `boolean`,
             defaultValue: "false"
         },
         {
-            key: '4',
+            key: '3',
             param: 'disabled',
             explain: '是否禁用',
             type: `boolean`,
             defaultValue: "false"
         },
         {
+            key: '4',
+            param: 'indeterminate',
+            explain: '是否为中间状态',
+            type: 'boolean',
+            defaultValue: "false"
+        },
+        {
             key: '5',
-            param: 'name',
-            explain: '用于分组',
-            type: 'string',
+            param: 'onChange',
+            explain: 'checkBox改变的回调',
+            type: '(label: string, checked: boolean) => void',
             defaultValue: "-"
         },
         {
             key: '6',
-            param: 'onChange',
-            explain: 'radio改变的回调',
-            type: '(e: React.ChangeEvent<HTMLInputElement>) => void',
-            defaultValue: "-"
-        },
-        {
-            key: '7',
             param: 'className',
-            explain: '自定义 radio 类名',
+            explain: '自定义 checkBox 类名',
             type: 'string',
             defaultValue: "-"
         },
         {
-            key: '8',
+            key: '7',
             param: 'style',
-            explain: '自定义 radio 样式',
+            explain: '自定义 checkBox 样式',
             type: 'React.CSSProperties',
             defaultValue: "-"
         },
@@ -96,29 +89,29 @@ export const Api2 = () => {
     const dataSource = [
         {
             key: '1',
-            param: 'value',
-            explain: 'radioGroup的默认值',
-            type: `any`,
+            param: 'defaultValue',
+            explain: 'checkBox的默认值',
+            type: `string[]`,
             defaultValue: "-"
         },
         {
             key: '2',
             param: 'onChange',
-            explain: 'radio改变的回调',
-            type: '(e: React.ChangeEvent<HTMLInputElement>) => void',
+            explain: 'checkBoxGroup改变的回调',
+            type: '(value: string[] => void',
             defaultValue: "-"
         },
         {
             key: '3',
             param: 'className',
-            explain: '自定义 radioGroup 类名',
+            explain: '自定义 checkBoxGroup 类名',
             type: 'string',
             defaultValue: "-"
         },
         {
             key: '4',
             param: 'style',
-            explain: '自定义 radioGroup 样式',
+            explain: '自定义 checkBoxGroup 样式',
             type: 'React.CSSProperties',
             defaultValue: "-"
         },

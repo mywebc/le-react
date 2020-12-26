@@ -1,0 +1,55 @@
+---
+name: CheckBox
+menu: 数据录入
+---
+
+import { Playground, Props  } from 'docz'
+import CheckBox from "./CheckBox"
+import CheckBoxGroup from "./CheckBoxGroup"
+import { Api1, Api2 } from "./Api"
+
+
+### CheckBox 复选框
+<p>在一组可选项中进行单项/多项选择时。</p> 
+
+## 基本用法
+<p>最简单的用法</p>
+
+<Playground>
+    <div className="basis"> 
+      <CheckBox label="备选项A"/>
+      <CheckBox label="备选项B" defaultChecked/>
+    </div>
+</Playground>
+
+## 禁用状态
+<p>设置disabled可以禁用</p>
+
+<Playground>
+  <div className="basis">
+      <CheckBox label="备选项A" disabled/>
+      <CheckBox label="备选项B" disabled defaultChecked/>
+  </div>
+</Playground>
+
+## 多选框组
+<p>一组互斥的 CheckBox 配合使用。</p>
+
+<Playground>
+  <div className="basis">
+      <CheckBoxGroup defaultValue={["备选项A", "备选项B"]}>
+        <CheckBox label="备选项A" />
+        <CheckBox label="备选项B" />
+        <CheckBox label="备选项C" />
+        <CheckBox label="备选项D" />
+      </CheckBoxGroup>
+  </div>
+</Playground>
+
+## APi
+#### Radio
+<Api1/>
+
+#### RadioGroup
+<Api2/>
+

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect, useRef } from "react"
+import React, { memo, useCallback, useState, useEffect, useRef, useContext } from "react"
 import classnames from "classnames"
 import CheckBox from "./CheckBox"
 
@@ -7,11 +7,12 @@ import { useIsValidChildren } from "../../hooks/useIsValidChildren"
 
 interface ICCheckBoxGroupProps {
 	defaultValue?: string[];
-	disabled?: boolean;
 	onChange?: (checked: string[]) => void;
 	className?: string;
 	style?: React.CSSProperties;
 }
+
+export 	const checkBoxGroupContext = React.createContext<string[]>([]);
 
 const CheckBoxGroup: React.FC<ICCheckBoxGroupProps> = memo(({ defaultValue = [], onChange, children, className, style }) => {
 
@@ -36,19 +37,20 @@ const CheckBoxGroup: React.FC<ICCheckBoxGroupProps> = memo(({ defaultValue = [],
 		onChange && onChange(checkedValueRef.current)
 	}, [checkedValueRef.current])
 
-
 	return isValidChildren ? (
-		<div className={classes} style={style}>
-			{React.Children.map(children, _ => {
-				const childProps = {
-					...(_ as any).props,
-					name: "group",
-					defaultChecked: defaultValue?.includes((_ as any).props.label),
-					onChange: handleChange
-				}
-				return React.cloneElement(_ as any, childProps)
-			})}
-		</div>
+		<checkBoxGroupContext.Provider value={defaultValue}>
+			<div className={classes} style={style}>
+				{React.Children.map(children, _ => {
+					const childProps = {
+						...(_ as any).props,
+						name: "group",
+						defaultChecked: defaultValue?.includes((_ as any).props.label),
+						onChange: handleChange
+					}
+					return React.cloneElement(_ as any, childProps)
+				})}
+			</div>
+		</checkBoxGroupContext.Provider>
 	) : null
 })
 

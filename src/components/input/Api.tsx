@@ -78,14 +78,14 @@ const Api = () => {
         {
             key: '8',
             param: 'className',
-            explain: '自定义 Rate 类名',
+            explain: '自定义 Input 类名',
             type: 'string',
             defaultValue: "-"
         },
         {
             key: '9',
             param: 'style',
-            explain: '自定义 Rate 样式',
+            explain: '自定义 Input 样式',
             type: 'React.CSSProperties',
             defaultValue: "-"
         },

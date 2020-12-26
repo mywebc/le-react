@@ -35,14 +35,14 @@ const Api = () => {
     {
       key: '5',
       param: 'className',
-      explain: '自定义 Button 类名',
+      explain: '自定义 Affix 类名',
       type: 'string',
       defaultValue: "-"
     },
     {
       key: '6',
       param: 'style',
-      explain: '自定义 Button 样式',
+      explain: '自定义 Affix 样式',
       type: 'React.CSSProperties',
       defaultValue: "-"
     },
