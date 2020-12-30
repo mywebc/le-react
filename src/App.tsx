@@ -14,6 +14,8 @@ import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup"
 import CheckBox from "./components/checkBox/CheckBox"
 import CheckBoxGroup from "./components/checkBox/CheckBoxGroup"
+import Collapse from "./components/collapse/Collapse"
+import CollapseItem from "./components/collapse/CollapseItem"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
@@ -109,6 +111,26 @@ const App = () => {
         <CheckBox label="备选项C" />
         <CheckBox label="备选项D" />
       </CheckBoxGroup>
+
+      <p>aaaa</p>
+
+      <Collapse>
+        <CollapseItem title="this is header 1">
+          A dog is a type of domesticated animal.
+          Known for its loyalty and faithfulness,
+          it can be found as a welcome guest in many households across the world.
+        </CollapseItem>
+        <CollapseItem title="this is header 2">
+          A dog is a type of domesticated animal.
+          Known for its loyalty and faithfulness,
+          it can be found as a welcome guest in many households across the world.
+        </CollapseItem>
+        <CollapseItem title="this is header 3">
+          A dog is a type of domesticated animal.
+          Known for its loyalty and faithfulness,
+          it can be found as a welcome guest in many households across the world.
+        </CollapseItem>
+      </Collapse>
 
     </div>
   );
