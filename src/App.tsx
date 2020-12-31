@@ -114,7 +114,7 @@ const App = () => {
 
       <p>aaaa</p>
 
-      <Collapse>
+      <Collapse onChange={(x) => { console.log("asdas", x) }} accordion defaultSpread={0}>
         <CollapseItem title="this is header 1">
           A dog is a type of domesticated animal.
           Known for its loyalty and faithfulness,
@@ -125,7 +125,7 @@ const App = () => {
           Known for its loyalty and faithfulness,
           it can be found as a welcome guest in many households across the world.
         </CollapseItem>
-        <CollapseItem title="this is header 3">
+        <CollapseItem title="this is header 3" >
           A dog is a type of domesticated animal.
           Known for its loyalty and faithfulness,
           it can be found as a welcome guest in many households across the world.

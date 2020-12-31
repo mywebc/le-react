@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect, useRef, useContext } from "react"
+import React, { memo, useCallback, useRef } from "react"
 import classnames from "classnames"
 import CheckBox from "./CheckBox"
 
@@ -12,7 +12,7 @@ interface ICCheckBoxGroupProps {
 	style?: React.CSSProperties;
 }
 
-export 	const checkBoxGroupContext = React.createContext<string[]>([]);
+export const checkBoxGroupContext = React.createContext<string[]>([]);
 
 const CheckBoxGroup: React.FC<ICCheckBoxGroupProps> = memo(({ defaultValue = [], onChange, children, className, style }) => {
 

@@ -11,6 +11,6 @@ export const useIsValidChildren = (children: React.ReactNode, Element: React.FC<
 				}
 			})
 		}
-	}, [children, setIsValidChildren])
+	}, [children, setIsValidChildren, Element])
 	return { isValidChildren }
 }

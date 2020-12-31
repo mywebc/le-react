@@ -36,7 +36,6 @@ const CheckBox: React.FC<ICheckBoxProps> = memo(({ label, disabled = false, defa
     }, [indeterminate])
 
     useEffect(() => {
-        console.log(groupDefaultValue)
         if (groupDefaultValue.length !== 0) {
             if (groupDefaultValue.includes(label)) {
                 setIsChecked(true)
@@ -44,7 +43,7 @@ const CheckBox: React.FC<ICheckBoxProps> = memo(({ label, disabled = false, defa
         } else {
             setIsChecked(false)
         }
-    }, [groupDefaultValue])
+    }, [groupDefaultValue, label, setIsChecked])
 
     return (
         <div className={classes} style={style}>

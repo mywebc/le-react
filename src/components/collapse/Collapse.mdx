@@ -1,0 +1,96 @@
+---
+name: Collapse
+menu: 数据展示
+---
+
+import { Playground, Props  } from 'docz'
+import Collapse from "./Collapse"
+import CollapseItem from "./CollapseItem"
+import { Api1, Api2 } from "./Api"
+
+
+### Collapse 折叠面板
+<p>对复杂区域进行分组和隐藏时。 手风琴是一种特殊的折叠面板，只允许单个面板展开。</p> 
+
+## 基本用法
+<p>最简单的用法</p>
+
+<Playground>
+    <div className="basis"> 
+        <Collapse defaultSpread={[0]}>
+            <CollapseItem title="this is header 1">
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 2">
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 3" >
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+      </Collapse>
+    </div>
+</Playground>
+
+## 禁用状态
+<p>设置disabled可以禁用</p>
+
+<Playground>
+  <div className="basis">
+      <Collapse defaultSpread={[0]}>
+            <CollapseItem title="this is header 1" disabled>
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 2">
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 3" >
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+      </Collapse>
+  </div>
+</Playground>
+
+## 手风琴模式
+<p>手风琴模式只允许单个面板一次展开。</p>
+
+<Playground>
+  <div className="basis">
+      <Collapse defaultSpread={[0]} accordion>
+            <CollapseItem title="this is header 1">
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 2">
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+            <CollapseItem title="this is header 3" >
+            A dog is a type of domesticated animal.
+            Known for its loyalty and faithfulness,
+            it can be found as a welcome guest in many households across the world.
+            </CollapseItem>
+      </Collapse>
+  </div>
+</Playground>
+
+## APi
+#### Collapse
+<Api1/>
+
+#### CollapseItem
+<Api2/>
+
