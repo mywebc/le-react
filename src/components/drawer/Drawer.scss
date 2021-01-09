@@ -76,38 +76,38 @@
   }
   @keyframes fadeInRight {
     0% {
-      transform: translateX(400px);
+      transform: translateX(100%);
     }
 
     100% {
-      transform: translateX(0px);
+      transform: translateX(0);
     }
   }
   @keyframes fadeInLeft {
     0% {
-      transform: translateX(-400px);
+      transform: translateX(-100%);
     }
 
     100% {
-      transform: translateX(0px);
+      transform: translateX(0);
     }
   }
   @keyframes fadeInTop {
     0% {
-      transform: translateY(-400px);
+      transform: translateY(-100%);
     }
 
     100% {
-      transform: translateY(0px);
+      transform: translateY(0);
     }
   }
   @keyframes fadeInBottom {
     0% {
-      transform: translateY(400px);
+      transform: translateY(100%);
     }
 
     100% {
-      transform: translateY(0px);
+      transform: translateY(0);
     }
   }
 }
