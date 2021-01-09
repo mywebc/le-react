@@ -1,7 +1,7 @@
 import React from "react"
 import Icon from "../icon/Icon"
 import classnames from "classnames"
-import "./Spin.scss"
+import "./Pager.scss"
 
 interface IPagerProps {
     totalPage: number,
