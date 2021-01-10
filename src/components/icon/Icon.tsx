@@ -5,11 +5,12 @@ import "./Icon.scss"
 interface IIconProps {
     name: string;
     iconLibrary?: string;
+    onClick?: React.MouseEventHandler
     className?: string;
     style?: React.CSSProperties
 }
 
-const Icon: React.FC<IIconProps> = ({ iconLibrary = '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js', className, name, style }) => {
+const Icon: React.FC<IIconProps> = ({ iconLibrary = '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js', onClick, className, name, style }) => {
 
     useEffect(() => {
         const iconScript = document.querySelector("#icon-library")
@@ -28,7 +29,7 @@ const Icon: React.FC<IIconProps> = ({ iconLibrary = '//at.alicdn.com/t/font_2049
     const classes = classnames("le-icon", className)
 
     return (
-        <svg className={classes}><use xlinkHref={`#icon-${name}`} style={style} /></svg>
+        <svg className={classes}><use xlinkHref={`#icon-${name}`} style={style} onClick={onClick}/></svg>
     )
 }
 

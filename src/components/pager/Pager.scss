@@ -1,3 +1,90 @@
+$width: 28px;
+$height: 28px;
+$widthSmall: 22px;
+$heightSmall: 22px;
+$font-size: 12px;
+$border-radius: 4px;
+$border-color1: #e1e1e1;
+$blue: #4a90e2;
+$grey: #eee;
 .le-pager {
-    
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  user-select: none;
+  &.hide {
+    display: none;
+  }
+  &-separator {
+    width: $width;
+    font-size: 14px;
+  }
+  &-item {
+    min-width: $width;
+    height: $height;
+    font-size: 16px;
+    border: 1px solid $border-color1;
+    border-radius: 4px;
+    padding: 0 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px;
+    cursor: pointer;
+    &.current,
+    &:hover {
+      border-color: $blue;
+    }
+    &.current {
+      cursor: default;
+    }
+  }
+  &-nav {
+    margin: 0 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: $grey;
+    height: $height;
+    width: $width;
+    border-radius: $border-radius;
+    font-size: 14px;
+    cursor: pointer;
+    &.disabled {
+      cursor: default;
+      svg {
+        fill: darken($grey, 30%);
+      }
+    }
+  }
+  &.simple {
+    .prev {
+      background-color: #fff;
+    }
+    .le-pager-item {
+      border: none;
+      &.current,
+      &:hover {
+        color: $blue;
+      }
+    }
+    .next {
+      background-color: #fff;
+    }
+  }
+  &.small {
+    .le-pager-item {
+      font-size: 12px;
+      width: $widthSmall;
+      height: $heightSmall;
+    }
+    .prev {
+      width: $widthSmall;
+      height: $heightSmall;
+    }
+    .next {
+      width: $widthSmall;
+      height: $heightSmall;
+    }
+  }
 }
