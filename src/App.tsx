@@ -93,7 +93,7 @@ const App = () => {
       />
 
 
-      <Pager totalPage={10} currentPage={currentPage} onChange={(n) => { setCurrentPage(n) }} />
+      <Pager totalPage={5}  />
 
     </div>
   );

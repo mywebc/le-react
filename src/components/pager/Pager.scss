@@ -52,6 +52,7 @@ $grey: #eee;
     cursor: pointer;
     &.disabled {
       cursor: default;
+      pointer-events: none;
       svg {
         fill: darken($grey, 30%);
       }

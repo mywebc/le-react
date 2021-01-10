@@ -1,0 +1,47 @@
+---
+name: Pager
+menu: 导航
+---
+
+import { Playground, Props  } from 'docz'
+import Pager from "./Pager"
+import Icon from "../icon/Icon"
+import Api from "./Api"
+
+### Pager页码
+<p>分隔长列表，展示单个页面。</p>
+
+## 基本使用
+<p>最简单的用法。</p>
+
+<Playground>
+    <div className="basis">
+       <Pager  totalPage={100}/>
+    </div>
+</Playground>
+
+## 简洁
+<p>简洁版本</p>
+
+<Playground>
+    <div className="basis">
+       <Pager  totalPage={100} simple={true}/>
+    </div>
+</Playground>
+
+## 迷你
+<p>迷你版本。</p>
+
+<Playground>
+    <div className="basis">
+       <Pager  totalPage={100} size={"small"}/>
+    </div>
+</Playground>
+
+
+## APi
+
+<Api/>
+
+
+

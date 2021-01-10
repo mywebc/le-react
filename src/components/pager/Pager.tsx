@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react"
+import React, { useCallback, useEffect, useState, useRef, useMemo } from "react"
 import Icon from "../icon/Icon"
 import classnames from "classnames"
 import "./Pager.scss"
@@ -10,20 +10,32 @@ interface IPagerProps {
     size?: "small" | "default",
     hidePager?: boolean,
     onChange?: (current: number) => void,
+    prevClick?: (current: number) => void,
+    nextClick?: (current: number) => void,
     className?: string;
     style?: React.CSSProperties
 }
 
-const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "default", hidePager = true, totalPage, currentPage = 1, onChange }) => {
+const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "default", hidePager = true, totalPage, currentPage = 1, prevClick, nextClick, onChange }) => {
 
 
+    const [currentInnerPage, setCurrentInnerPage] = useState(currentPage)
 
     const handlePrevClick = useCallback(() => {
+        prevClick && prevClick(currentInnerPage - 1)
 
+        setCurrentInnerPage(_ => {
+            onClickPage(_ - 1)
+            return _ - 1
+        })
     }, [])
 
     const handleNextClick = useCallback(() => {
-
+        nextClick && nextClick(currentInnerPage + 1)
+        setCurrentInnerPage(_ => {
+            onClickPage(_ + 1)
+            return _ + 1
+        })
     }, [])
 
     // 去重
@@ -39,13 +51,13 @@ const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "defaul
         return unique(
             [
                 1,
-                currentPage - 1,
-                currentPage,
-                currentPage + 1,
-                currentPage + 2,
-                currentPage + 3,
-                currentPage + 4,
-                currentPage + 5,
+                currentInnerPage - 1,
+                currentInnerPage,
+                currentInnerPage + 1,
+                currentInnerPage + 2,
+                currentInnerPage + 3,
+                currentInnerPage + 4,
+                currentInnerPage + 5,
                 totalPage,
             ]
                 .filter((n) => n >= 1 && n <= totalPage)
@@ -60,13 +72,12 @@ const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "defaul
             }
             return prev;
         }, [])
-    }, [currentPage, totalPage])
+    }, [currentInnerPage, totalPage])
 
     const onClickPage = (n: number) => {
         if (n >= 1 && n <= totalPage) {
-            // ctx.emit("update:currentPage", n);
-            // ctx.emit("currentChange", n)
             onChange && onChange(n)
+            setCurrentInnerPage(n)
         }
     };
 
@@ -78,14 +89,14 @@ const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "defaul
         })} style={style}>
             {/* left arrow */}
             <span className={classnames("le-pager-nav", "prev", {
-                "disabled": currentPage === 1
-            })} >
-                <Icon name="arrow-left" onClick={handlePrevClick} />
+                "disabled": currentInnerPage === 1
+            })} onClick={handlePrevClick}>
+                <Icon name="arrow-left" />
             </span>
             {/* content */}
 
             {pages().map((_, i) => {
-                if (_ === currentPage) {
+                if (_ === currentInnerPage) {
                     return <span className="le-pager-item current" key={i}>{_}</span>
                 } else if (_ === '...') {
                     return <Icon className="le-pager-separator" name="ellipsis" key={i} />
@@ -96,9 +107,9 @@ const Pager: React.FC<IPagerProps> = ({ className, style, simple, size = "defaul
 
             {/* right arrow */}
             <span className={classnames("le-pager-nav next", {
-                "disabled": currentPage === totalPage
-            })} >
-                <Icon name="arrow-right" onClick={handleNextClick} />
+                "disabled": currentInnerPage === totalPage
+            })} onClick={handleNextClick}>
+                <Icon name="arrow-right" />
             </span>
         </div >
     )
