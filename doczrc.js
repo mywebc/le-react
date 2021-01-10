@@ -1,6 +1,7 @@
 export default {
   typescript: true,
   title: "React",
+  public: "/public",
   menu: [
     '快速开始',
     // { name: 'Components', menu: ['Input','Button'] }

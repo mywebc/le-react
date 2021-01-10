@@ -10,7 +10,12 @@ interface IIconProps {
     style?: React.CSSProperties
 }
 
-const Icon: React.FC<IIconProps> = ({ iconLibrary = '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js', onClick, className, name, style }) => {
+// '//at.alicdn.com/t/font_2049320_ixovveh7lgf.js'
+
+
+const Icon: React.FC<IIconProps> = ({ iconLibrary = "/public/iconLibrary.js", onClick, className, name, style }) => {
+
+
 
     useEffect(() => {
         const iconScript = document.querySelector("#icon-library")
