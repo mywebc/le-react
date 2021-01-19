@@ -96,6 +96,8 @@ const App = () => {
 
       <Pager totalPage={5}  />
 
+      <Popover/>
+
     </div>
   );
 }
