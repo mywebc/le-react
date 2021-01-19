@@ -17,6 +17,7 @@ import CheckBoxGroup from "./components/checkBox/CheckBoxGroup"
 import Collapse from "./components/collapse/Collapse"
 import CollapseItem from "./components/collapse/CollapseItem"
 import Pager from "./components/pager/Pager"
+import Popover from "./components/popover/popover"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
