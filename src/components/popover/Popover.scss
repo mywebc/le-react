@@ -1,0 +1,99 @@
+$popover-border-color: #ebeef5;
+$popover-border-radius: 4px;
+.le-popover {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.popover-content-wrapper {
+  position: absolute;
+  border: 1px solid $popover-border-color;
+  border-radius: $popover-border-radius;
+  // filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+//   box-shadow: 3px 3px 7px rgb(0 0 0);
+  background: white;
+  padding: 0.5em 1em;
+  max-width: 20em;
+  word-break: break-all;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    border: 10px solid transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &::before,
+    &::after {
+      left: 10px;
+    }
+    &::before {
+      border-top-color: $popover-border-color;
+      border-bottom: none;
+      top: 100%;
+    }
+    &::after {
+      border-top-color: white;
+      border-bottom: none;
+      top: calc(100% - 1px);
+    }
+  }
+  &.position-bottom {
+    margin-top: 10px;
+    &::before,
+    &::after {
+      left: 10px;
+    }
+    &::before {
+      border-top: none;
+      border-bottom-color: $popover-border-color;
+      bottom: 100%;
+    }
+    &::after {
+      border-top: none;
+      border-bottom-color: white;
+      bottom: calc(100% - 1px);
+    }
+  }
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &::before {
+      border-left-color: $popover-border-color;
+      border-right: none;
+      left: 100%;
+    }
+    &::after {
+      border-left-color: white;
+      border-right: none;
+      left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &::before {
+      border-right-color: $popover-border-color;
+      border-left: none;
+      right: 100%;
+    }
+    &::after {
+      border-right-color: white;
+      border-left: none;
+      right: calc(100% - 1px);
+    }
+  }
+}

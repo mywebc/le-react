@@ -17,7 +17,7 @@ import CheckBoxGroup from "./components/checkBox/CheckBoxGroup"
 import Collapse from "./components/collapse/Collapse"
 import CollapseItem from "./components/collapse/CollapseItem"
 import Pager from "./components/pager/Pager"
-import Popover from "./components/popover/popover"
+import Popover from "./components/popover/Popover"
 
 type notificationType = "info" | "success" | "error" | "warning" | "open"
 
@@ -94,9 +94,23 @@ const App = () => {
       />
 
 
-      <Pager totalPage={5}  />
+      <Pager totalPage={5} />
 
-      <Popover/>
+
+      <p></p>
+      <Popover content={"这是一段提示"} trigger="hover">
+        <Button>popover test</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="left">
+        <Button>popover test</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="right">
+        <Button>popover test</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="bottom">
+        <Button>popover test</Button>
+      </Popover>
+
 
     </div>
   );

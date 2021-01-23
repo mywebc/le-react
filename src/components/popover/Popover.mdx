@@ -1,0 +1,70 @@
+---
+name: Popover
+menu: 数据展示
+---
+
+import { Playground, Props  } from 'docz'
+import Popover from "./Popover"
+import Button from "../button/Button"
+import Api from "./Api"
+
+### Popover 气泡卡片
+<p>触发时弹出卡片浮层。</p>
+
+## 基本使用
+<p>最简单的用法。</p>
+
+<Playground>
+    <div className="basis">
+        <Popover content={"popover内容"}>
+            <Button>click me</Button>
+        </Popover>
+    </div>
+</Playground>
+
+## 不同的方向
+<p>支持四个不同方向</p>
+
+<Playground>
+    <div className="basis">
+       <Popover content={"这是一段提示"} >
+        <Button>popover top</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="left">
+        <Button>popover left</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="right">
+        <Button>popover right</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="bottom">
+        <Button>popover bottom</Button>
+      </Popover>
+    </div>
+</Playground>
+
+## 触发方式
+<p>支持click和hover两种方式</p>
+
+<Playground>
+    <div className="basis">
+       <Popover content={"这是一段提示"} >
+        <Button>click top</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} trigger="hover">
+        <Button>hover top</Button>
+      </Popover>
+      <Popover content={"这是一段提示"} position="bottom">
+        <Button>click bottom</Button>
+      </Popover>
+       <Popover content={"这是一段提示"} position="bottom" trigger="hover">
+        <Button>hover bottom</Button>
+      </Popover>
+    </div>
+</Playground>
+
+## APi
+
+<Api/>
+
+
+
