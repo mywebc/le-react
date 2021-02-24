@@ -14,3 +14,13 @@ export { default as Switch } from "./switch/Switch"
 export { default as Table } from "./table/Table"
 export { default as Radio } from "./radio/Radio"
 export { default as RadioGroup } from "./radio/RadioGroup"
+export { default as CheckBox } from "./checkBox/CheckBox"
+export { default as CheckBoxGroup } from "./checkBox/CheckBoxGroup"
+export { default as Collapse } from "./collapse/Collapse"
+export { default as CollapseItem } from "./collapse/CollapseItem"
+export { default as Input } from "./input/Input"
+export { default as Pager } from "./pager/Pager"
+export { default as Popover } from "./popover/Popover"
+
+
+
