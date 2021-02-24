@@ -4,8 +4,8 @@ hidden: true
 
 
 
-### Le-React
-> Le-React是一款基于 React Hook 和 TypeScript 编写的 UI 组件库。
+### le-react-ui
+> le-react-ui是一款基于 React Hook 和 TypeScript 编写的 UI 组件库。
 
 本组件库旨在学习React hooks以及熟悉TypeScript语法，可以作为学习项目，因此不建议在生产环境中使用。
 
