@@ -3,6 +3,7 @@ export default {
   title: "React",
   public: "/public",
   menu: [
+    '介绍',
     '快速开始',
     // { name: 'Components', menu: ['Input','Button'] }
     '通用',
@@ -10,8 +11,9 @@ export default {
     '导航',
     '数据录入',
     '数据展示',
-    '反馈'
+    '反馈',
   ],
+  ignore:["README.md"],
   themeConfig: {
     colors: {
       header: {
