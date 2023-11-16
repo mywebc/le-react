@@ -4,7 +4,7 @@ import logo from '../../images/logo.png'
 export const Logo = () => {
 
     const getToHome = () => {
-        window.location = window.location.origin
+        window.location = window.location.origin + "/le-react/"
     }
 
     return (

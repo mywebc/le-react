@@ -1,4 +1,5 @@
 export default {
+  base: "le-react",
   typescript: true,
   title: "React",
   public: "/public",
